@@ -1,12 +1,84 @@
-# React + Vite
+# SEMICOLON 웹사이트
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+세미콜론(;) 동아리의 공식 웹사이트
+스터디 및 프로젝트 모집, 동아리 소개, 동아리원 소개, 활동 결과물 공유 등 다양한 기능을 제공
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Frontend
 
-## Expanding the ESLint configuration
+- Frontend: React + Vite
+- 구성원: 김선혜, 이기찬
+- 브랜치 전략: main, frontend, feature/기능명
+- 커밋 메시지 규칙: [이름] feat: 기능 설명
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 주요 페이지 및 기능
+
+### 1. 스터디 및 프로젝트 구인 페이지
+
+| 기능 구역 | 설명 |
+|-----------|------|
+| 구인글 리스트 | 제목, 인원, 모집 일정 표시 |
+| 구인글 상세 | 제목, 상세 내용, 일정, 지원하기 버튼 |
+| 구인글 작성 | 제목/날짜/인원/기타 내용 입력 후 등록 |
+| 지원하기 폼 | 지원자 정보, 기술 스택, 포트폴리오 입력 |
+| 고정 버튼 | 우측 상단 "동아리 지원하기" 버튼 연결 포함 |
+
+※ 구인글, 상세, 작성, 지원하기는 모두 백엔드 연동 필요
+
+---
+
+### 2. 동아리 소개 페이지
+
+- SEMICOLON 로고 및 소개 문구
+- 설립일, 설립 목적, 활동 내용 안내
+- 시각 요소 (아이콘 연결 그래픽)
+- 하단 저작권 및 개발자 정보 표시
+
+※ 백엔드 연동 없음
+
+---
+
+### 3. 동아리원 소개 페이지
+
+- 상단 탭: 운영진 / 현재 부원 / 졸업 부원
+- 각 동아리원 카드: 사진, 역할, 포트폴리오, 연락처
+- 포트폴리오 버튼 클릭 시 외부 링크 이동
+- 운영자만 보이는 + 버튼 → 인원 추가 페이지 연결
+
+※ 백엔드 연동 필요 (카드 데이터, 탭 필터링, 등록 기능 등)
+
+---
+
+### 4. 스터디 & 프로젝트 소개 페이지
+
+- 탭: 진행 중 / 완료 항목 전환
+- 리스트: 제목, 날짜, 인원 표시
+- 상세 페이지:
+  - 완료: 결과물 링크, 참여자, 활동 설명
+  - 진행 중: 주차별 체크리스트, 진행률 시각화
+
+※ 전체 백엔드 연동 필요
+
+---
+
+## 브랜치 전략
+
+| 브랜치명 | 설명 | 담당자 |
+|----------|------|--------|
+| main | 최종 배포용 | - |
+| frontend | 통합 개발 브랜치 | - |
+| feature/recruit-board | 모집 페이지 전체 | 이기찬 |
+| feature/club-info | 동아리 소개 | 김선혜 |
+| feature/members | 동아리원 소개 | - |
+| feature/study-projects | 스터디 & 프로젝트 소개 | - |
+| feature/ui-layout | 공통 컴포넌트 (Header, Footer) | 김선혜 |
+
+---
+
+## 커밋 메시지 규칙
+
+```bash
+[이름] feat: 작업한 기능 설명
