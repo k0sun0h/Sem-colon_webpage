@@ -12,7 +12,6 @@ import Introduce from './pages/Introduce';
 function App() {
   return (
     <Router>
-      {/* div 태그로 전체 앱의 배경과 최소 높이 설정 */}
       <div>
 
         {/* Header */}
