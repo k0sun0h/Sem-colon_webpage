@@ -9,7 +9,7 @@ export default {
       fontFamily: {
         julius: ['"Julius Sans One"', 'sans-serif'],
         audiowide: ['Audiowide', 'cursive'],
-        seoulnamsan: ['"SeoulNamsan"', 'sans-serif'], 
+        seoulnamsan: ['"SeoulNamsan"', 'sans-serif'],
       },
     },
   },
