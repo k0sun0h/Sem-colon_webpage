@@ -9,8 +9,8 @@
 
 - Frontend: React + Vite
 - 구성원: 김선혜, 이기찬
-- 브랜치 전략: main, frontend, feature/기능명
-- 커밋 메시지 규칙: [이름] feat: 기능 설명
+- 브랜치 전략: frontend/구성원이름
+- 커밋 메시지 규칙: [이름] - 작업한 기능 설명
 
 ---
 
@@ -66,19 +66,18 @@
 
 ## 브랜치 전략
 
-| 브랜치명 | 설명 | 담당자 |
-|----------|------|--------|
-| main | 최종 배포용 | - |
-| frontend | 통합 개발 브랜치 | - |
-| feature/recruit-board | 모집 페이지 전체 | 이기찬 |
-| feature/club-info | 동아리 소개 | 김선혜 |
-| feature/members | 동아리원 소개 | - |
-| feature/study-projects | 스터디 & 프로젝트 소개 | - |
-| feature/ui-layout | 공통 컴포넌트 (Header, Footer) | 김선혜 |
+| 페이지 | 브랜치 이름 | 담당자 |
+| --- | --- | --- |
+| 스터디 & 프로젝트 구인 페이지 | `frontend/이기찬` | 이기찬 |
+| 동아리 소개 페이지 | `frontend/김선혜` | 김선혜 |
+| 동아리원 소개 페이지 | `frontend/` | (미정) |
+| 스터디 & 프로젝트 소개 페이지 | `frontend/` | (미정) |
+| 공통 컴포넌트 (header & footer) | `frontend/김선혜` | 김선혜 |
 
 ---
 
 ## 커밋 메시지 규칙
 
 ```bash
-[이름] feat: 작업한 기능 설명
+[이름]
+- 작업한 기능 설명
