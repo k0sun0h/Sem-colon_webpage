@@ -1,5 +1,9 @@
 .text {
-    padding: 30px;
+    padding: 35px;
     font-family: 'SeoulNamsan', sans-serif;
     color: gray;
+    background-color: white;
+
+    position: relative;
+    z-index: 10;
 }
