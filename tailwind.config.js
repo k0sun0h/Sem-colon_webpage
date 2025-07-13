@@ -5,7 +5,13 @@ export default {
     './src/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        julius: ['"Julius Sans One"', 'sans-serif'],
+        audiowide: ['Audiowide', 'cursive'],
+        seoulnamsan: ['"SeoulNamsan"', 'sans-serif'], 
+      },
+    },
   },
   plugins: [],
 }
