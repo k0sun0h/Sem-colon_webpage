@@ -13,11 +13,16 @@ function App() {
   return (
     <Router>
       {/* div 태그로 전체 앱의 배경과 최소 높이 설정 */}
-      <div className="w-full min-h-screen"> {/* w-full: 너비 100% |  min-h-screen: 화면 전체 높이를 최소 높이로 지정 */}
-        <Header />
+      <div>
 
-        <main className="flex justify-center"> {/* 내부 콘텐츠를 수평 정렬 | 가로 방향 중앙 정렬 */}
-          <div className="w-full max-w-[1440px] px-6 py-12"> {/* w-full: 너비 100% | max-w-[1440px]: 최대 너비를 1440px로 제한 | px-6 py-12: 좌우 24px, 상하 48px의 패딩 설정 */}
+        {/* Header */}
+        <div>
+          <Header />
+        </div>
+
+        {/* Main */}
+        <main>
+          <div>
 
             {/* Routes: 여러 경로를 정의할 수 있는 블록 */}
             {/* Route: 특정 경로에 해당하는 컴포넌트를 렌더링 */}
@@ -29,7 +34,11 @@ function App() {
           </div>
         </main>
 
-        <Footer />
+        {/* Footer */}
+        <div>
+          <Footer />
+        </div>
+
       </div>
     </Router>
   );
