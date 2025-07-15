@@ -1,0 +1,271 @@
+.fixed-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../assest/back-ground-image.jpeg'); /* 위치에 맞게 경로 확인 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.fixed-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.8;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.write-box {
+  position: relative;
+  width: 1320px;
+  min-height: 700px;     /* ✅ 기본 높이는 유지하되 */
+  height: auto;           /* ✅ 내용에 따라 자동 확장 */
+  background-color: rgba(217, 217, 217, 0.2);
+  margin: 118px auto 0 auto;
+  padding-top: 110px;
+  border-radius: 20px;
+  padding-bottom: 20px;
+}
+
+
+.sepa-line {
+  position: absolute;
+  top: 95px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1265px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 3;
+}
+
+.apply-title {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 30px;
+  color: white;
+  font-weight: 500;
+  z-index: 4;
+}
+
+.close-button {
+  position: absolute;
+  top: 33px;
+  right: 35px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 4;
+}
+
+/* 입력 폼 */
+.apply-form {
+  margin-top: 30px; /* 위치 조절 가능 */
+  display: flex;
+  justify-content: center;
+  z-index: 4;
+}
+
+.apply-form-group {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.apply-label {
+  color: white;
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+.apply-input {
+  width: 180px;
+  padding: 5px 8px;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+}
+
+/* 연락처 전용 그룹 */
+.contact-input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: transparent;
+}
+
+.contact-prefix {
+  color: white;
+  font-size: 16px;
+  line-height: 1.4;
+  margin-right: 4px;
+  white-space: nowrap;
+}
+
+.contact-input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 16px;
+  line-height: 1.4;
+  width: 100px;
+  padding: 0; /* 상하 패딩 없앰 */
+  margin: 0;
+}
+
+.contact-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* 지원 동기 입력 영역 전용 */
+.apply-form-group {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* 지원 동기 입력 전용 줄 */
+.motivation-group {
+  flex-direction: row;
+  align-items: flex-start;
+  margin-top: 30px;
+  margin-left: 87px;
+}
+
+/* 지원 동기 라벨 */
+.motivation-label {
+  margin-top: 8px;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+/* 지원 동기 입력 박스 */
+.motivation-input {
+  margin-top: 8px;
+  width: 900px;
+  height: 200px;
+  resize: none;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  margin-left: 15px;
+  padding: 10px;
+}
+
+
+/* 그룹 공통 */
+.portfolio-group,
+.stack-group {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-left: 88px;
+  
+}
+
+/* 라벨 or 라벨 스페이서 */
+.portfolio-label,
+.stack-label,
+.portfolio-label-spacer,
+.stack-label-spacer {
+  width: 260px;         /* 좌우 정렬 핵심: 고정 너비 확보 */
+  font-size: 16px;
+  color: white;
+  white-space: nowrap;
+}
+
+.portfolio-label-spacer,
+.stack-label-spacer {
+  height: 35px;         /* 입력칸 높이와 일치 */
+}
+
+/* 입력칸 */
+.portfolio-input,
+.stack-input {
+  width: 750px;
+  height: 35px;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  margin-left: 15px;
+  padding: 6px 10px;
+}
+
+.add-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 6px;
+  margin-left: -25px;
+  line-height: 1;
+}
+
+.portfolio-label-spacer {
+  display: inline-block;
+  width: 260px;       /* 기존 라벨과 동일한 너비 */
+  height: 35px;
+  flex-shrink: 0;
+  margin-left: 8px;  /* ✅ 추가된 입력칸만 오른쪽으로 20px 이동 */
+}
+
+.stack-label-spacer {
+  display: inline-block;
+  width: 260px;
+  height: 35px;
+  flex-shrink: 0;
+  margin-left: 8px;  /* 원하는 만큼 조절 */
+}
+
+.finish-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 100px;
+  height: 33px;
+  border-radius: 15px;
+  border: none;
+  background-color: white;
+  color: black;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+
+
+

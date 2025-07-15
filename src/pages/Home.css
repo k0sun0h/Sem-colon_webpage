@@ -1,0 +1,125 @@
+/* 회색 박스 */
+.content-box {
+  position: relative;
+  width: 1320px;
+  height: 549px;
+  background-color: rgba(217, 217, 217, 0.2);
+  border-radius: 20px;
+  margin: 80px auto;
+  z-index: 2;
+}
+
+/* 가로선 */
+.separator-line {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1265px;
+  height: 5px;
+  border: 1px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 3;
+}
+
+/* 세로선 공통 */
+.vertical-line {
+  position: absolute;
+  top: 75px;
+  height: 461px;
+  width: 3px;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 3;
+}
+.vline-1 { left: 560px; }
+.vline-2 { left: 752px; }
+.vline-3 { left: 980px; }
+
+/* 각 라벨 (제목 등 텍스트) */
+.label-title {
+  position: absolute;
+  top: 25px;
+  left: 275px;
+  font-size: 20px;
+  color: white;
+  font-weight: 500;
+  z-index: 4;
+}
+.label-recruit {
+  left: 620px;
+}
+.label-date {
+  left: 830px;
+}
+.label-schedule {
+  left: 1050px;
+}
+
+/* 작성하기 버튼 */
+.write-button {
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+  width: 100px;
+  height: 33px;
+  border-radius: 15px;
+  border: none;
+  background-color: white;
+  color: black;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+
+/* 제출된 데이터 공통 스타일 */
+.submitted-data {
+  position: absolute;
+  color: white;
+  font-size: 18px;
+  z-index: 4;
+}
+
+/* 항목별 위치 */
+.submitted-title {
+  top: 100px;
+  left: 3%;
+}
+.submitted-recruit {
+  top: 100px;
+  left: 647px;
+}
+.submitted-date {
+  top: 100px;
+  left: 768px;
+}
+.submitted-schedule {
+  top: 100px;
+  left: 990px;
+}
+
+.apply-button {
+  
+  align-items: center;     /* 세로 중앙 정렬 */
+
+  margin-left: 15px;
+  padding: 6px 12px;
+  width: 100px;
+  height: 33px;
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.apply-button:hover {
+  background-color: yellow;
+}
+
+.schedule-text {
+  font-weight: normal;
+}
