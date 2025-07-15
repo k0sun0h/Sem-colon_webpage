@@ -16,6 +16,8 @@ function VideoBackground() {
             loop: 1,
             mute: 1,
             playlist: 'XNf1lWwc-Cw',
+            start: 0,
+            end: 120
           },
         }}
         className="video-iframe"
