@@ -1,0 +1,55 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 30px;
+
+  position: relative;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.05em;
+  font-family: 'Julius Sans One', sans-serif;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 600;
+  color: white;
+}
+
+.nav {
+  font-family: 'SeoulNamsan', sans-serif;
+  display: flex;
+  gap: 40px;
+  font-weight: 500;
+  color: white;
+  font-size: 20px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: white;
+  opacity: 0.6;
+}
+
+.nav div {
+  opacity: 0.6;
+}
+
+.nav a.active {
+  opacity: 1;
+}
+
+.apply-button {
+  font-family: 'SeoulNamsan', sans-serif;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 5px 30px;
+  border: none;
+  cursor: pointer;
+}

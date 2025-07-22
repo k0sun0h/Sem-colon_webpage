@@ -1,0 +1,208 @@
+/* 전체 초기화 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 고정 배경 이미지 */
+.fixed-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../../public/Members-background.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+/* 검은 반투명 오버레이 */
+.fixed-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.8;
+}
+
+/* 스크롤 가능한 내용 전체 */
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 50px 0;
+}
+
+.members-wrapper {
+  position: relative;
+  z-index: 1;
+  padding: 100px 50px;
+  color: white;
+}
+
+.members-category {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.members-tab {
+  background-color: rgba(255, 255, 255, 0.1); /* ✅ 공통 배경 */
+  border: 1px solid white;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.members-tab:hover {
+  background-color: rgba(255, 255, 255, 0.25); /* ✅ 모든 탭 동일하게 */
+}
+
+/* ✅ active는 강조만 하고 배경은 동일 */
+.members-tab.active {
+  font-weight: bold;
+  /* background 제거 */
+  /* color 변경 없음 */
+}
+
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  gap: 60px;
+  margin-top: 30px;
+}
+
+.member-card {
+  display: flex;
+  gap: 30px;
+  padding: 40px 60px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid white;
+  border-radius: 20px;
+  max-width: 800px;
+  min-height: 400px;
+  color: white;
+  position: relative;
+  align-items: flex-start;
+}
+
+.member-image-wrapper {
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.member-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: white;
+}
+
+.member-info {
+  flex-grow: 1;
+}
+
+.member-name {
+  margin-left: 45px;
+  font-size: 75px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.member-role {
+  display: inline-block;
+  font-size: 16px;
+  padding: 4px 10px;
+  margin-left: 50px;
+  margin-bottom: 16px;
+  border: 1px solid white;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+
+.member-position {
+
+  font-size: 50px;
+  border: 1px solid white;
+  border-radius: 4px;
+
+  margin-bottom: 16px;
+}
+
+.member-desc {
+  font-size: 40px;
+  font-weight: 400;
+  color: white;
+  margin-left: -175px;
+  margin-bottom: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.member-part {
+  font-size: 20px;
+  color: #ccc;
+  margin-left: -175px;
+  margin-bottom: 30px;
+}
+
+.member-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.portfolio-link {
+  font-size: 25px;
+  color: white;
+  margin-left: -175px;
+  text-decoration: underline;
+}
+
+.contact {
+  font-size: 25px;
+  margin-left: 300px;
+  opacity: 0.9;
+}
+
+.add-member-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 15%;
+  background-color: rgb(63, 63, 63);
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  border: 2px, solid, white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  cursor: pointer;
+  z-index: 100;
+  transition: transform 0.2s ease;
+}
+
+.add-member-button:hover {
+  transform: scale(1.1);
+}
+
+.member-card.current {
+  background-color: white;
+  color: black;
+}
