@@ -44,7 +44,12 @@
 
 /* nextSection 영역 */
 .nextSection {
-  background-color: black;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
   color: white;
   padding: 200px 20px;
   display: flex;
@@ -54,10 +59,18 @@
 }
 
 .growth-circle {
-  position: relative;
-  width: 500px;
-  height: 500px;
-  z-index: 11;
+  position: relative; /* 이거 없으면 절대 좌표 깨짐 */
+  width: 1200px;
+  height: 600px;
+  margin: 0 auto;
+}
+
+.circle-path-svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-10deg); /* 기존 div와 동일 */
+  z-index: 10;
 }
 
 /* 타원 경로 */
@@ -90,13 +103,16 @@
 /* 이미지 아이템 */
 .circle-item {
   position: absolute;
-  width: 200px; /* 로고 크기 더 확대 */
-  height: 200px; /* 로고 크기 더 확대 */
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   background-color: white;
   padding: 8px;
   box-sizing: border-box;
   z-index: 12;
+  top: 0;
+  left: 0;
+  transform: translate(0, 0);
 }
 
 /* 아이템 위치 */
@@ -107,35 +123,34 @@
 .item5 { top: 50%; left: -65%; transform: translateX(-50%); }
 
 
-
 /* clubInfoSection 영역 */
+.clubInfoSectionTotal {
+  padding: 50px 0;
+}
+
 .clubInfoSection {
-  width: 2133px;
-  height: 971px;
-  background-image: url('background.png');
-  background-size: cover;
   background-position: center;
-  padding: 60px 20px;
+  padding: 50px 20px;
   position: relative;
   z-index: 10;
 }
 
 .club-info-row {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* 두 개의 컬럼으로 나눔 */
-  grid-gap: 20px; /* 간격 설정 */
-  margin: 30px 0; /* 간격을 더 확보 */
-  position: relative;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "title content";
+  align-items: center;
 }
 
-.club-info-title-1 {
+.club-info-title-1,
+.club-info-title-2,
+.club-info-title-3 {
   font-weight: 900;
-  font-size: 45px;
+  font-size: 50px;
   text-align: center;
-  margin-left: 450px;
-  margin-right: 50px;
-  position: relative;
+  margin: 0 auto;
   z-index: 11;
+  color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
@@ -143,55 +158,94 @@
   margin-top: 80px;
 }
 
-.club-info-title-2 {
-  font-weight: 900;
-  font-size: 45px;
-  text-align: center;
-  margin-top: 200px;
-  margin-left: 50px;
-  margin-right: 450px;
-  position: relative;
-  z-index: 11;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-}
-
-.club-info-1 {
-  background-color: #f7f7f7;
-  padding: 20px 30px;
+.club-info-1{
+  background-color: #eeeeee;
   border-radius: 15px;
   text-align: center;
-  font-size: 30px;
+  font-size: 26px;
   font-weight: bold;
-  line-height: 1.7;
+  line-height: 1.8;
   box-shadow: 6px 6px 10px rgba(0,0,0,0.3);
-  margin-left: 50px;
-  margin-right: 450px;
-  position: relative;
+  margin: 0 auto;
   z-index: 11;
-  
+  height: 120px;
+  width: 700px;
+  display: flex;    
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  flex-direction: column;
 }
 
 .club-info-2 {
-  background-color: #f7f7f7;
-  padding: 20px 30px;
+  background-color: #eeeeee;
   border-radius: 15px;
   text-align: center;
-  font-size: 30px;
+  font-size: 26px;
   font-weight: bold;
-  line-height: 1.7;
+  line-height: 1.8;
   box-shadow: 6px 6px 10px rgba(0,0,0,0.3);
-  margin-left: 450px;
-  margin-right: 50px;
-  position: relative;
+  margin: 0 auto;
   z-index: 11;
+  height: 300px;
+  width: 700px;
+  display: flex;    
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+
+.club-info-3 {
+  background-color: #eeeeee;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 1.8;
+  box-shadow: 6px 6px 10px rgba(0,0,0,0.3);
+  margin: 0 auto;
+  z-index: 11;
+  height: 200px;
+  width: 700px;
+  display: flex;    
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+
+.club-info-2 strong,
+.club-info-3 strong {
+  font-weight: 900;
+  color: #000;
+  background-color: hwb(44 64% 7%);
+  padding: 0 6px;
+  border-radius: 4px;
+}
+
+
+/* clubScheduleSection 영역 */
+.clubScheduleSection {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 0, 0, 0.1) 100%
+    );
+  padding: 60px 20px;
+  position: relative;
+  z-index: 10;
 }
 
 .club-info-bottom {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  gap: 20px;
-  margin: 50px 0;
+  margin: 70px 0;
   position: relative;
   z-index: 11;
 }
@@ -203,19 +257,19 @@
 .club-info-bottom-title p strong {
   font-weight: 900;
   font-size: 45px;
+  color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .club-activity-box {
-  background-color: black;
-  color: white;
+  background-color: white;
   padding: 20px;
-  margin-top: 10px;
+  margin-top: 25px;
   border-radius: 15px;
   width: 400px;
+  font-weight: bold;
   text-align: center;
   line-height: 2;
-  font-weight: bold;
   font-size: 30px;
   box-shadow: 6px 6px 10px rgba(0,0,0,0.3);
   position: relative;
@@ -227,10 +281,16 @@
   font-size: 17px;
 }
 
-/* clubScheduleSection 영역 */
-.clubScheduleSection {
-  background-color: white;
-  padding: 60px 20px;
-  position: relative;
-  z-index: 10;
+
+/* fade-up 애니메이션 효과: 초기 상태 */
+.fade-up-section {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* 화면에 보이면 활성화될 상태 */
+.fade-up-section.show {
+  opacity: 1;
+  transform: translateY(0);
 }
