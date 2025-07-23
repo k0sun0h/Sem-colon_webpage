@@ -8,6 +8,8 @@ import Footer from './components/Footer';
 
 // /pages/Introduce.js 파일에서 Introduce 페이지 컴포넌트를 가져옴
 import Introduce from './pages/Introduce';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 
 function App() {
   return (
@@ -28,6 +30,10 @@ function App() {
             <Routes> 
               <Route path="/" element={<Introduce />} /> 
               {/* / 경로로 접근하면 Introduce 페이지가 렌더링됨 */}
+              <Route path="/login" element={<Login />} />
+              {/* /login 경로로 접근하면 Login 페이지가 렌더링됨 */}
+              <Route path="/signup" element={<SignUp />} />
+              {/* /signup 경로로 접근하면 SignUp 페이지가 렌더링됨 */}
             </Routes>
 
           </div>
