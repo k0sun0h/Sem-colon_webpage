@@ -3,10 +3,25 @@ import '../css/VideoBackground.css';
 import '../App.css';
 
 function VideoBackground() {
+  const onPlayerReady = (event) => {
+    const player = event.target;
+    player.mute();
+    player.playVideo();
+
+    // 루프 보장
+    player.addEventListener('onStateChange', (e) => {
+      if (e.data === 0) { // 0: 영상 종료 상태
+        player.seekTo(0);
+        player.playVideo();
+      }
+    });
+  };
+
   return (
     <div className="video-background">
       <YouTube
         videoId="XNf1lWwc-Cw"
+        onReady={onPlayerReady}
         opts={{
           playerVars: {
             autoplay: 1, // 자동 재생
