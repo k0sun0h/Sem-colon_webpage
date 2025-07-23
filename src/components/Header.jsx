@@ -6,11 +6,7 @@ import '../css/Header.css';
 function Header() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState({
-    name: "홍길동",
-    major: "전기공학과",
-    email: "hi1234@suwon.ac.kr",
-  });
+  const [user, setUser] = useState(null);
 
   const navigate = useNavigate();
   const popupRef = useRef(null);
@@ -19,11 +15,7 @@ function Header() {
 
   const handleLogout = () => {
     setIsLoggedIn(false);
-    setUser({
-      name: "홍길동",
-      major: "전기공학과",
-      email: "hi1234@suwon.ac.kr",
-    });
+    setUser(null);
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('user');
   };
@@ -33,7 +25,12 @@ function Header() {
     navigate('/login');
   };
 
-  // localStorage 로그인 정보 불러오기
+  const handleSignup = () => {
+    setIsPopupOpen(false);
+    navigate('/signup');
+  };
+
+  // 로그인 상태 변경 감지용
   useEffect(() => {
     const loginStatus = localStorage.getItem('isLoggedIn');
     const storedUser = localStorage.getItem('user');
@@ -41,6 +38,9 @@ function Header() {
     if (loginStatus === 'true' && storedUser) {
       setIsLoggedIn(true);
       setUser(JSON.parse(storedUser));
+    } else {
+      setIsLoggedIn(false);
+      setUser(null);
     }
   }, []);
 
@@ -79,7 +79,7 @@ function Header() {
               <p>로그인 필요</p>
               <div className="popup-buttons login-buttons">
                 <button onClick={handleLogin}>로그인</button>
-                <button>회원가입</button>
+                <button onClick={handleSignup}>회원가입</button>
               </div>
             </div>
           ) : (
