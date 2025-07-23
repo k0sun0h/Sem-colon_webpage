@@ -131,6 +131,12 @@
   gap: 10px;
 }
 
+.login-content p {
+  margin: 40px 0;
+  font-size: 30px;
+  font-weight: bold;
+}
+
 .login-buttons button {
   flex: 1;
   padding: 8px;
