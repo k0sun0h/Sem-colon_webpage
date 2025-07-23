@@ -1,18 +1,18 @@
-/* 작성 페이지 전용 스타일 */
-
+/* ======= 고정 배경 이미지 설정 ======= */
 .fixed-background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url('../public/back-ground-image.jpeg'); /* 경로는 Write.jsx 기준으로 */
+  background-image: url('../public/back-ground-image.jpeg'); /* 이미지 경로 (Write.jsx 기준) */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   z-index: 0;
 }
 
+/* 배경 위 어두운 반투명 오버레이 */
 .fixed-background::after {
   content: '';
   position: absolute;
@@ -24,25 +24,28 @@
   opacity: 0.8;
 }
 
+/* 내용 전체 컨테이너 (배경 위로 올라감) */
 .content {
   position: relative;
   z-index: 1;
 }
 
+/* ======= 작성 박스 ======= */
 .write-box {
-  position: absolute; /* 기존 relative → absolute로 변경 */
-  top: -120px; /* 상단에서 60px만큼 떨어진 위치 (조절 가능) */
+  position: absolute;         /* 배경 기준으로 절대 위치 */
+  top: -120px;                /* 화면 상단에서 떨어진 위치 (디자인 조정 가능) */
   left: 35%;
-  transform: translateX(-50%); /* 가운데 정렬 */
+  transform: translateX(-50%); /* 수평 중앙 정렬 */
 
   width: 1320px;
   height: 700px;
-  background-color: rgba(217, 217, 217, 0.2);
+  background-color: rgba(217, 217, 217, 0.2); /* 회색 반투명 */
   border-radius: 20px;
-  padding-top: 80px; /* 내부 콘텐츠 상단 여백도 함께 조정 (기존 110px에서 줄임) */
-  padding-bottom: 20px; /* 필요 시 추가 */
+  padding-top: 80px;          /* 내부 콘텐츠 상단 여백 */
+  padding-bottom: 20px;
 }
 
+/* 상단 흰색 가로선 */
 .sepa-line {
   position: absolute;
   top: 95px;
@@ -56,6 +59,7 @@
   z-index: 3;
 }
 
+/* 상단 제목 텍스트 */
 .write-title {
   position: absolute;
   top: 25px;
@@ -67,6 +71,7 @@
   z-index: 4;
 }
 
+/* 우측 상단 닫기 버튼 */
 .close-button {
   position: absolute;
   top: 33px;
@@ -80,22 +85,25 @@
   z-index: 4;
 }
 
-/* 작성 박스 안에 form 영역 공통 */
+/* ======= form 구성 ======= */
+
+/* 입력 그룹 공통 (한 줄 단위) */
 .form-group {
   display: flex;
   align-items: center;
-  margin: 35px 0 0 150px;
+  margin: 35px 0 0 150px; /* 좌측 고정 여백 + 상단 마진 */
 }
 
+/* 라벨 공통 스타일 */
 .form-label {
   width: 100px;
   color: white;
   font-size: 20px;
   font-weight: 400;
-  margin-right: 100px;
+  margin-right: 100px; /* 라벨과 입력창 간격 */
 }
 
-/* 입력 공통 스타일 */
+/* 입력 박스 공통 스타일 */
 .input-box {
   padding: 6px 10px;
   border: 1px solid white;
@@ -105,41 +113,48 @@
   font-size: 18px;
 }
 
-/* 제목 입력 박스 */
+/* 제목 입력 필드 */
 .title-input {
   width: 450px;
 }
 
-/* 모집인원 및 날짜 입력 */
+/* 모집인원 및 날짜 입력 필드 (소형) */
 .small-input {
   width: 200px;
   margin-right: 8px;
 }
 
-/* ~ 표시 스타일 */
+/* 날짜 구간 사이의 ~ 표시 스타일 */
 .tilde {
   color: white;
   margin: 0 8px;
   font-size: 16px;
 }
 
-/* 기타 내용 텍스트 영역 */
+/* 기타내용 입력 textarea */
 .textarea-input {
   width: 600px;
   height: 150px;
   resize: none;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 4px;
+  color: white;
+  font-size: 18px;
+  padding: 10px;
 }
 
-/* 기타 내용 전용 그룹 설정 */
+/* 기타내용 전용 그룹 (상단 정렬) */
 .form-group.textarea-group {
   align-items: flex-start;
 }
 
-/* 기타 내용 라벨 수직 위치 보정 */
+/* 기타내용 라벨 상단 위치 보정 */
 .textarea-label {
-  margin-top: 5px; /* 위로 조금 올림 */
+  margin-top: 5px;
 }
 
+/* ======= 작성 완료 버튼 ======= */
 .finish-button {
   position: absolute;
   bottom: 20px;
