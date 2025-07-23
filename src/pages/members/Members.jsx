@@ -12,7 +12,7 @@ function Members({ currentMembers, graduatedMembers }) {
   const [category, setCategory] = useState(location.state?.category || '운영진');
 
   // 각 카테고리별 멤버 데이터 구성
-  const memberData = {
+  const memberData = { 
     운영진: [
       {
         name: '홍길동',

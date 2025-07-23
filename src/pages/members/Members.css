@@ -212,7 +212,7 @@
 }
 
 /* 버튼 hover 효과 */
-.add-member-button:hover {
+.add-member-button:hover { 
   transform: scale(1.1);
 }
 
