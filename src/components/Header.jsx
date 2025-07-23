@@ -1,23 +1,61 @@
-import { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { IoPersonCircle } from "react-icons/io5";
 import '../css/Header.css';
 
 function Header() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // 로그인 상태 (초기값 테스트용)
-
-  const togglePopup = () => setIsPopupOpen(!isPopupOpen);
-  const handleLogout = () => setIsLoggedIn(false);
-  const handleLogin = () => setIsLoggedIn(true);
-
-  // 테스트용 유저 데이터
-  const user = {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState({
     name: "홍길동",
     major: "전기공학과",
     email: "hi1234@suwon.ac.kr",
+  });
+
+  const navigate = useNavigate();
+  const popupRef = useRef(null);
+
+  const togglePopup = () => setIsPopupOpen(!isPopupOpen);
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUser({
+      name: "홍길동",
+      major: "전기공학과",
+      email: "hi1234@suwon.ac.kr",
+    });
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('user');
   };
-  
+
+  const handleLogin = () => {
+    setIsPopupOpen(false);
+    navigate('/login');
+  };
+
+  // localStorage 로그인 정보 불러오기
+  useEffect(() => {
+    const loginStatus = localStorage.getItem('isLoggedIn');
+    const storedUser = localStorage.getItem('user');
+
+    if (loginStatus === 'true' && storedUser) {
+      setIsLoggedIn(true);
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  // 팝업 외부 클릭 시 닫기
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (isPopupOpen && popupRef.current && !popupRef.current.contains(e.target)) {
+        setIsPopupOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isPopupOpen]);
+
   return (
     <header className="header">
       <Link to="/" className="logo">SEM;COLON</Link>
@@ -35,7 +73,7 @@ function Header() {
       </div>
 
       {isPopupOpen && (
-        <div className="user-popup">
+        <div className="user-popup" ref={popupRef}>
           {!isLoggedIn ? (
             <div className="login-content">
               <p>로그인 필요</p>
