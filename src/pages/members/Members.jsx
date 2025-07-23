@@ -1,15 +1,17 @@
+// 상태 및 페이지 이동을 위한 훅
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+// 스타일시트 import
 import './Members.css';
 
-function Members({currentMembers, graduatedMembers}) {
-  const navigate = useNavigate(); // 추가
-  const location = useLocation();
+function Members({ currentMembers, graduatedMembers }) {
+  const navigate = useNavigate();            // 페이지 이동 함수
+  const location = useLocation();            // 현재 페이지 위치 정보
 
+  // 탭 상태 초기화 (URL state로부터 category를 받을 수도 있음)
   const [category, setCategory] = useState(location.state?.category || '운영진');
 
-  
-
+  // 각 카테고리별 멤버 데이터 구성
   const memberData = {
     운영진: [
       {
@@ -19,8 +21,7 @@ function Members({currentMembers, graduatedMembers}) {
         part: '프론트엔드',
         contact: '010 - XXXX - XXXX',
         portfolio: 'https://example.com/hong',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC3VqzAwDdyNtTWgitKl6IhyjHlJzjENeEEQ&s', // 또는 큰 프로필 이미지
-
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC3VqzAwDdyNtTWgitKl6IhyjHlJzjENeEEQ&s',
       },
       {
         name: '임꺽정',
@@ -50,14 +51,18 @@ function Members({currentMembers, graduatedMembers}) {
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvf-nhjPBwckIrCzIS5-gWLpezrRNUkwyjxw&s',
       },
     ],
-    '현재 부원': currentMembers,
-    '졸업 부원': graduatedMembers,
+    '현재 부원': currentMembers,     // 부모 컴포넌트에서 전달된 데이터
+    '졸업 부원': graduatedMembers,   // 부모 컴포넌트에서 전달된 데이터
   };
 
   return (
     <>
+      {/* 배경 이미지 */}
       <div className="fixed-background"></div>
+
+      {/* 전체 멤버 영역 */}
       <div className="members-wrapper">
+        {/* 카테고리 탭 버튼 */}
         <div className="members-category">
           {['운영진', '현재 부원', '졸업 부원'].map((label) => (
             <button
@@ -70,40 +75,55 @@ function Members({currentMembers, graduatedMembers}) {
           ))}
         </div>
 
+        {/* 멤버 카드 그리드 */}
         <div className="members-grid">
+          {/* 선택된 카테고리의 멤버가 없을 경우 */}
           {memberData[category].length === 0 ? (
             <div className="empty-message">아직 등록된 멤버가 없습니다.</div>
           ) : (
             memberData[category].map((member, idx) => (
               <div className="member-card" key={idx}>
-  <div className="member-left">
-    <img src={member.image} alt={member.name} className="member-image" />
-  </div>
-  <div className="member-right">
-    <div className="member-name">{member.name}</div>
-    <div className="member-role">{category === '졸업 부원' ? '졸업생' : member.     position || '부원'}</div>
-    <div className="member-desc">{member.description}</div>
-    <div className="member-part">파트: {member.part}</div>
-    <div className="member-footer">
-      <a href={member.portfolio} target="_blank" rel="noreferrer" className="portfolio-link">
-        포트폴리오 보기
-      </a>
-      <span className="contact">{member.contact}</span>
-    </div>
-  </div>
-</div>
-
+                {/* 좌측 이미지 */}
+                <div className="member-left">
+                  <img src={member.image} alt={member.name} className="member-image" />
+                </div>
+                {/* 우측 정보 영역 */}
+                <div className="member-right">
+                  <div className="member-name">{member.name}</div>
+                  <div className="member-role">
+                    {category === '졸업 부원' ? '졸업생' : member.position || '부원'}
+                  </div>
+                  <div className="member-desc">{member.description}</div>
+                  <div className="member-part">파트: {member.part}</div>
+                  <div className="member-footer">
+                    <a
+                      href={member.portfolio}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="portfolio-link"
+                    >
+                      포트폴리오 보기
+                    </a>
+                    <span className="contact">{member.contact}</span>
+                  </div>
+                </div>
+              </div>
             ))
           )}
         </div>
-
-       
-
       </div>
-       {(category === '현재 부원' || category === '졸업 부원') && (
-        <button className="add-member-button" onClick={() => navigate('/members/add', { state: { category } })}>＋</button>
-)}
 
+      {/* '현재 부원' 또는 '졸업 부원' 탭일 때만 + 버튼 표시 */}
+      {(category === '현재 부원' || category === '졸업 부원') && (
+        <button
+          className="add-member-button"
+          onClick={() =>
+            navigate('/members/add', { state: { category } }) // 해당 카테고리 정보 전달
+          }
+        >
+          ＋
+        </button>
+      )}
     </>
   );
 }
