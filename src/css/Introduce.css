@@ -159,13 +159,12 @@
 }
 
 .club-info-1{
-  background-color: #eeeeee;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 15px;
   text-align: center;
   font-size: 26px;
   font-weight: bold;
   line-height: 1.8;
-  box-shadow: 6px 6px 10px rgba(0,0,0,0.3);
   margin: 0 auto;
   z-index: 11;
   height: 120px;
@@ -176,16 +175,16 @@
   text-align: center;
   box-sizing: border-box;
   flex-direction: column;
+  color: white;
 }
 
 .club-info-2 {
-  background-color: #eeeeee;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 15px;
   text-align: center;
   font-size: 26px;
   font-weight: bold;
   line-height: 1.8;
-  box-shadow: 6px 6px 10px rgba(0,0,0,0.3);
   margin: 0 auto;
   z-index: 11;
   height: 300px;
@@ -196,16 +195,16 @@
   text-align: center;
   box-sizing: border-box;
   flex-direction: column;
+  color:white;
 }
 
 .club-info-3 {
-  background-color: #eeeeee;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 15px;
   text-align: center;
   font-size: 26px;
   font-weight: bold;
   line-height: 1.8;
-  box-shadow: 6px 6px 10px rgba(0,0,0,0.3);
   margin: 0 auto;
   z-index: 11;
   height: 200px;
@@ -216,13 +215,13 @@
   text-align: center;
   box-sizing: border-box;
   flex-direction: column;
+  color:white;
 }
 
 .club-info-2 strong,
 .club-info-3 strong {
   font-weight: 900;
-  color: #000;
-  background-color: hwb(44 64% 7%);
+  color: rgb(237, 217, 163);
   padding: 0 6px;
   border-radius: 4px;
 }
@@ -255,14 +254,17 @@
 }
 
 .club-info-bottom-title p strong {
-  font-weight: 900;
-  font-size: 45px;
-  color: white;
+  font-weight: 800;
+  font-size: 40px;
+  color: rgb(255, 255, 255);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+  border-radius:15px;
+  padding: 10px 140px;
 }
 
 .club-activity-box {
-  background-color: white;
+  border: rgba(255, 255, 255, 0.4) 1px solid;
   padding: 20px;
   margin-top: 25px;
   border-radius: 15px;
@@ -271,9 +273,11 @@
   text-align: center;
   line-height: 2;
   font-size: 30px;
-  box-shadow: 6px 6px 10px rgba(0,0,0,0.3);
   position: relative;
+
   z-index: 11;
+  color:white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .club-activity-box p span {
