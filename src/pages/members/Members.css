@@ -6,7 +6,7 @@
 }
 
 /* 고정 배경 이미지 설정 (화면 전체에 깔림) */
-.fixed-background {
+.fix-background {
   position: fixed;
   top: 0;
   left: 0;
@@ -20,7 +20,7 @@
 }
 
 /* 배경 위 어두운 반투명 오버레이 */
-.fixed-background::after {
+.fix-background::after {
   content: '';
   position: absolute;
   top: 0;

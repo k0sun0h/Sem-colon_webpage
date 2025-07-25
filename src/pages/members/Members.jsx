@@ -58,7 +58,7 @@ function Members({ currentMembers, graduatedMembers }) {
   return (
     <>
       {/* 배경 이미지 */}
-      <div className="fixed-background"></div>
+      <div className="fix-background"></div>
 
       {/* 전체 멤버 영역 */}
       <div className="members-wrapper">
