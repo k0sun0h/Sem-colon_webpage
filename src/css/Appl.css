@@ -27,20 +27,24 @@
 /* 콘텐츠 전체 영역 (배경 위로 올라옴) */
 .content {
   position: relative;
+  margin-top: -75px;
+  margin-bottom: 200px;
   z-index: 1; /* 배경 위 */
 }
 
 /* 작성 폼을 감싸는 박스 */
 .write-box {
   position: relative;
+  top: 60px; /* 상단에서 60px만큼 떨어진 위치 (조절 가능) */
+  left: 50%;
+  transform: translateX(-50%); /* 가운데 정렬 */
+
   width: 1320px;
-  min-height: 700px; /* 기본 높이 */
-  height: auto;      /* 내용에 따라 늘어남 */
-  background-color: rgba(217, 217, 217, 0.2); /* 회색 반투명 배경 */
-  margin: 118px auto 0 auto; /* 상단 마진 + 수평 중앙 정렬 */
-  padding-top: 110px;
+  height: 700px;
+  background-color: rgba(217, 217, 217, 0.2);
   border-radius: 20px;
-  padding-bottom: 20px;
+  padding-top: 80px; /* 내부 콘텐츠 상단 여백도 함께 조정 (기존 110px에서 줄임) */
+  padding-bottom: 20px; /* 필요 시 추가 */
 }
 
 /* 상단 구분선 */
