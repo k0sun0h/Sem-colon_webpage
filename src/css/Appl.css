@@ -27,15 +27,15 @@
 /* 콘텐츠 전체 영역 (배경 위로 올라옴) */
 .content {
   position: relative;
-  margin-top: -75px;
-  margin-bottom: 200px;
+  margin-top: -85px;
+  margin-bottom: 75px;
   z-index: 1; /* 배경 위 */
 }
 
 /* 작성 폼을 감싸는 박스 */
 .write-box {
   position: relative;
-  top: 60px; /* 상단에서 60px만큼 떨어진 위치 (조절 가능) */
+  top: 2px; /* 상단에서 60px만큼 떨어진 위치 (조절 가능) */
   left: 50%;
   transform: translateX(-50%); /* 가운데 정렬 */
 
