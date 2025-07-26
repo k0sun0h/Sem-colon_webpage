@@ -24,46 +24,48 @@ function Write({ addFormData }) {
 
   // 작성 완료 버튼 클릭 시 유효성 검사 후 등록
   const handleSubmit = () => {
-    if (
-      !title.trim() ||
-      !recruitCount.trim() ||
-      !recruitStart.trim() || !recruitEnd.trim() ||
-      !scheduleStart.trim() || !scheduleEnd.trim() ||
-      !etc.trim()
-    ) {
-      alert('모든 항목을 입력해주세요.');
-      return;
-    }
+  if (
+    !title.trim() ||
+    !recruitCount.trim() ||
+    !recruitStart.trim() || !recruitEnd.trim() ||
+    !scheduleStart.trim() || !scheduleEnd.trim() ||
+    !etc.trim()
+  ) {
+    alert('모든 항목을 입력해주세요.');
+    return;
+  }
 
-    const newPost = {
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  if (!user || !user.email) {
+    alert("로그인이 필요한 기능입니다.");
+    return;
+  }
+
+  const newPost = {
     title,
     recruitStart,
     recruitEnd,
-    email: user?.email || "anonymous"
+    email: user.email  // ✅ 로그인된 유저의 이메일
   };
 
-  // ✅ 기존 목록 불러오기 (없으면 빈 배열)
   const existingPosts = JSON.parse(localStorage.getItem('postList')) || [];
-
-  // ✅ 새 글을 기존 글 뒤에 추가
   const updatedPosts = [...existingPosts, newPost];
-
-  // ✅ 배열로 다시 저장
   localStorage.setItem('postList', JSON.stringify(updatedPosts));
 
-    // 부모 컴포넌트로 데이터 전달
-    addFormData({
-      title,
-      recruitCount,
-      recruitStart,
-      recruitEnd,
-      scheduleStart,
-      scheduleEnd
-    });
+  addFormData({
+    title,
+    recruitCount,
+    recruitStart,
+    recruitEnd,
+    scheduleStart,
+    scheduleEnd
+  });
 
-    // 등록 후 홈으로 이동
-    navigate('/study');
-  };
+  alert("작성 완료되었습니다.");
+  navigate('/study');
+};
+
 
   return (
     <>
