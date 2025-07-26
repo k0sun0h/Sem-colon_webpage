@@ -35,6 +35,22 @@ function Write({ addFormData }) {
       return;
     }
 
+    const newPost = {
+    title,
+    recruitStart,
+    recruitEnd,
+    email: user?.email || "anonymous"
+  };
+
+  // ✅ 기존 목록 불러오기 (없으면 빈 배열)
+  const existingPosts = JSON.parse(localStorage.getItem('postList')) || [];
+
+  // ✅ 새 글을 기존 글 뒤에 추가
+  const updatedPosts = [...existingPosts, newPost];
+
+  // ✅ 배열로 다시 저장
+  localStorage.setItem('postList', JSON.stringify(updatedPosts));
+
     // 부모 컴포넌트로 데이터 전달
     addFormData({
       title,
@@ -56,7 +72,7 @@ function Write({ addFormData }) {
 
       {/* 실제 입력 콘텐츠 */}
       <div className="content">
-        <div className="write-box">
+        <div className="writ-box">
           {/* 닫기 버튼 */}
           <button className="close-button" onClick={handleClose}>X</button>
 

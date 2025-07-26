@@ -31,10 +31,10 @@
 }
 
 /* ======= 작성 박스 ======= */
-.write-box {
-  position: absolute;         /* 배경 기준으로 절대 위치 */
-  top: -120px;                /* 화면 상단에서 떨어진 위치 (디자인 조정 가능) */
-  left: 35%;
+.writ-box {
+  position: relative;         /* 배경 기준으로 절대 위치 */
+  top: -20px;                /* 화면 상단에서 떨어진 위치 (디자인 조정 가능) */
+  left: 50%;
   transform: translateX(-50%); /* 수평 중앙 정렬 */
 
   width: 1320px;

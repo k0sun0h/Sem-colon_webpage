@@ -76,17 +76,6 @@ function Appl({ dataList }) {
                 onChange={(e) => setDepartment(e.target.value)}
               />
 
-              <label className="appl-label">학번</label>
-              <input
-                type="text"
-                className="appl-input"
-                value={studentId}
-                onChange={(e) => {
-                  const onlyNums = e.target.value.replace(/[^0-9]/g, '');
-                  setStudentId(onlyNums);
-                }}
-              />
-
               <label className="appl-label">이름</label>
               <input
                 type="text"

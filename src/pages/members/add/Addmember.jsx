@@ -9,7 +9,7 @@ import { useState } from 'react';
 function AddMember({ setCurrentMembers, setGraduatedMembers }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const category = location.state?.category || '현재 부원'; // 이전 페이지에서 선택된 탭 상태 유지
+  const category = location.state?.category || '현재 부원';
 
   // 입력 폼 상태
   const [name, setName] = useState('');
@@ -17,20 +17,21 @@ function AddMember({ setCurrentMembers, setGraduatedMembers }) {
   const [intro, setIntro] = useState('');
   const [portfolio, setPortfolio] = useState('');
   const [contact, setContact] = useState('');
-  const [photo, setPhoto] = useState(null); // 이미지 파일
+  const [photo, setPhoto] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null); // 🔥 추가: 미리보기용
 
-  // [1] 파일을 base64 문자열로 변환하는 함수
+  // 파일을 base64 문자열로 변환하는 함수
   const fileToBase64 = (file) =>
     new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result); // 성공 시 base64 반환
+      reader.onload = () => resolve(reader.result);
       reader.onerror = (error) => reject(error);
     });
 
   return (
     <>
-      {/* ← 버튼: 목록으로 돌아가기 */}
+      {/* ← 버튼 */}
       <button
         className="add-member-button"
         onClick={() => navigate('/members', { state: { category } })}
@@ -38,38 +39,40 @@ function AddMember({ setCurrentMembers, setGraduatedMembers }) {
         ←
       </button>
 
-      {/* 배경 이미지 */}
       <div className="fixed-background" />
 
-      {/* 전체 등록 폼 박스 */}
       <div className="add-container">
         <div className="add-box">
           <h2 className="add-title">부원 등록</h2>
 
           <div className="add-content">
-            {/* 사진 업로드 버튼 */}
+            {/* 사진 업로드 */}
             <div className="photo-upload-wrapper">
               <label htmlFor="photo-upload" className="photo-circle">
-                사진 추가
+                {previewUrl ? (
+                  <img src={previewUrl} alt="미리보기" className="photo-preview" />
+                ) : (
+                  '사진 추가'
+                )}
               </label>
               <input
                 type="file"
                 id="photo-upload"
                 accept="image/*"
-                style={{ display: 'none' }} // 숨김 input
-                onChange={(e) => {
+                style={{ display: 'none' }}
+                onChange={async (e) => {
                   const file = e.target.files[0];
                   if (file) {
+                    const base64 = await fileToBase64(file);
                     setPhoto(file);
-                    console.log('선택된 파일:', file.name);
+                    setPreviewUrl(base64);
                   }
                 }}
               />
             </div>
 
-            {/* 텍스트 입력 영역 */}
+            {/* 입력 폼 */}
             <div className="form-wrapper">
-              {/* 이름 + 파트 */}
               <div className="form-row">
                 <label>이 름</label>
                 <input
@@ -89,7 +92,6 @@ function AddMember({ setCurrentMembers, setGraduatedMembers }) {
                 </div>
               </div>
 
-              {/* 소개 또는 취업 회사 */}
               <div className="form-row">
                 <label>{category === '졸업 부원' ? '취업 회사' : '한 줄 소개'}</label>
                 <input
@@ -100,7 +102,6 @@ function AddMember({ setCurrentMembers, setGraduatedMembers }) {
                 />
               </div>
 
-              {/* 포트폴리오 + 연락처 */}
               <div className="form-row">
                 <label>포트폴리오</label>
                 <input
@@ -122,11 +123,10 @@ function AddMember({ setCurrentMembers, setGraduatedMembers }) {
             </div>
           </div>
 
-          {/* 제출 버튼 */}
+          {/* 등록 버튼 */}
           <button
             className="submit-button"
             onClick={async () => {
-              // 빈 칸 검증
               if (
                 !name.trim() ||
                 !part.trim() ||
@@ -139,10 +139,8 @@ function AddMember({ setCurrentMembers, setGraduatedMembers }) {
                 return;
               }
 
-              // [2] base64로 변환
               const base64Image = await fileToBase64(photo);
 
-              // [3] 새 멤버 객체 생성
               const newMember = {
                 name,
                 part,
@@ -152,15 +150,14 @@ function AddMember({ setCurrentMembers, setGraduatedMembers }) {
                 image: base64Image,
               };
 
-              // 상태에 추가
               if (category === '현재 부원') {
                 setCurrentMembers((prev) => [...prev, newMember]);
-              } else if (category === '졸업 부원') {
+              } else {
                 setGraduatedMembers((prev) => [...prev, newMember]);
               }
 
               alert('등록 완료!');
-              navigate('/members', { state: { category } }); // 해당 탭으로 복귀
+              navigate('/members', { state: { category } });
             }}
           >
             등 록

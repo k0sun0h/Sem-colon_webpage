@@ -35,12 +35,13 @@
 /* 작성 폼을 감싸는 박스 */
 .write-box {
   position: relative;
-  top: 2px; /* 상단에서 60px만큼 떨어진 위치 (조절 가능) */
+  top: -20px; /* 상단에서 60px만큼 떨어진 위치 (조절 가능) */
   left: 50%;
   transform: translateX(-50%); /* 가운데 정렬 */
 
   width: 1320px;
-  height: 700px;
+  min-height: 600px;
+  height: auto;
   background-color: rgba(217, 217, 217, 0.2);
   border-radius: 20px;
   padding-top: 80px; /* 내부 콘텐츠 상단 여백도 함께 조정 (기존 110px에서 줄임) */
@@ -177,7 +178,7 @@
 /* 지원 동기 입력 박스 (textarea) */
 .motivation-input {
   margin-top: 8px;
-  width: 900px;
+  width: 950px;
   height: 200px;
   resize: none;
   background-color: transparent;

@@ -116,13 +116,19 @@ function Members({ currentMembers, graduatedMembers }) {
       {/* '현재 부원' 또는 '졸업 부원' 탭일 때만 + 버튼 표시 */}
       {(category === '현재 부원' || category === '졸업 부원') && (
         <button
-          className="add-member-button"
-          onClick={() =>
-            navigate('/members/add', { state: { category } }) // 해당 카테고리 정보 전달
-          }
+         className="add-member-button"
+         onClick={() => {
+         const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        if (!isLoggedIn) {
+          alert('로그인 후 이용해주세요.');
+        return;
+        }
+         navigate('/members/add', { state: { category } });
+        }}
         >
-          ＋
+        ＋
         </button>
+
       )}
     </>
   );

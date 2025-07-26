@@ -5,7 +5,7 @@
   height: 549px; /* 박스 높이 고정 (1줄당 50px 기준 최대 9줄 + 여백 포함) */
   background-color: rgba(217, 217, 217, 0.2); /* 회색 반투명 배경 */
   border-radius: 20px;
-  margin: 80px auto; /* 위아래 여백 + 가운데 정렬 */
+  margin: 40px auto; /* 위아래 여백 + 가운데 정렬 */
   z-index: 2; /* 배경보다 위 */
 }
 
@@ -92,22 +92,22 @@
   left: 768px;
 }
 .submitted-schedule {
-  top: 100px;
+  margin-top: -2.2px;
   left: 990px;
 }
 
 /* 지원하기 버튼 */
 .appl-button {
   align-items: center; /* 버튼 내부 텍스트 수직 정렬 */
-  margin-left: 15px;   /* 날짜 오른쪽 간격 */
+  margin-left: 25px;   /* 날짜 오른쪽 간격 */
   padding: 6px 12px;
-  width: 100px;
+  width: 75px;
   height: 33px;
   font-size: 14px;
   font-weight: bold;
-  color: black;
+  color: white;
   background-color: transparent;
-  border: 2px solid black;
+  border: 2px solid rgb(216, 176, 17);
   border-radius: 15px;
   cursor: pointer;
 }

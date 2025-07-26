@@ -59,9 +59,16 @@ function Home({ dataList }) {
                 {/* 지원하기 클릭 시 해당 index에 맞는 지원서 페이지로 이동 */}
                 <button
                   className="appl-button"
-                  onClick={() => navigate(`/study/appl/${idx}`)}
+                  onClick={() => {
+                    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'; 
+                    if (!isLoggedIn) { 
+                      alert('로그인 후 이용해주세요.');
+                      return;
+                    }
+                    navigate(`/study/appl/${idx}`);
+                  }}
                 >
-                  지원하기
+                  ✉️
                 </button>
               </div>
             </div>
@@ -70,8 +77,15 @@ function Home({ dataList }) {
           {/* 작성하기 버튼 (새 모집글 작성 페이지로 이동) */}
           <button
             className="write-button"
-            onClick={() => navigate('/study/write')}
-          >
+            onClick={() => {
+              const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+              if (!isLoggedIn) {
+                alert('로그인 후 이용해주세요.');
+                return;
+              }
+              navigate('/study/write');
+              }} 
+               >
             작성하기
           </button>
         </div>

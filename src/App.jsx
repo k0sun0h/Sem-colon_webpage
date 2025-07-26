@@ -3,8 +3,14 @@
 import {  Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
+// 공통 UI 컴포넌트
+import Header from './components/Header';
+import Footer from './components/Footer';
+
 // 소개 페이지 컴포넌트 (기본 루트 경로 "/")
 import Introduce from './pages/Introduce';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 
 // 스터디 & 프로젝트 관련 컴포넌트 (폴더: pages/study)
 import StudyHome from './pages/study/StudyHome';
@@ -13,10 +19,10 @@ import StudyHome from './pages/study/StudyHome';
 import Members from './pages/members/Members';
 import AddMember from './pages/members/add/Addmember'; // ⬅️ 이건 반드시 추가해야 함
 
+import WRpost from './pages/my-page/WRpost';
 
-// 공통 UI 컴포넌트
-import Header from './components/Header';
-import Footer from './components/Footer';
+
+
 
 function App() {
   // 모집글 데이터를 상태로 관리
@@ -72,8 +78,15 @@ useEffect(() => {
             {/* 루트 경로 "/" 접근 시 소개 페이지 렌더링 */}
             <Route path="/" element={<Introduce />} />
 
+            <Route path="/login" element={<Login />} />
+              {/* /login 경로로 접근하면 Login 페이지가 렌더링됨 */}
+
+              <Route path="/signup" element={<SignUp />} />
+              {/* /signup 경로로 접근하면 SignUp 페이지가 렌더링됨 */}
 
             <Route path="/study/*" element={<StudyHome />} />
+
+            <Route path="/my-page/WRpost" element={<WRpost />} />
 
             <Route path="/members" element={<Members 
             currentMembers={currentMembers}
