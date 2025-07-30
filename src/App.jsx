@@ -11,6 +11,8 @@ import Introduce from './pages/Introduce';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import StudyProject from './pages/Study&Project';
+import StudyDetail from './pages/StudyDetail';
+import ProjectDetail from './pages/ProjectDetail';
 
 function App() {
   return (
@@ -37,6 +39,10 @@ function App() {
               {/* /signup 경로로 접근하면 SignUp 페이지가 렌더링됨 */}
               <Route path="/studyProject" element={<StudyProject />} />
               {/* /studyProject 경로로 접근하면 StudyProject 페이지가 렌더링됨 */}
+              <Route path="/studyDetail" element={<StudyDetail />} />
+              {/* /studyDetail 경로로 접근하면 StudyDetail 페이지가 렌더링됨 */}
+              <Route path="/projectDetail" element={<ProjectDetail />} />
+              {/* /projectDetail 경로로 접근하면 ProjectDetail 페이지가 렌더링됨 */}
             </Routes>
 
           </div>

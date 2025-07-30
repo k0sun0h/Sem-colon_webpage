@@ -11,7 +11,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../../public/studyProject-logo.png');
+  background-image: url('./studyProject-logo.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -84,6 +84,11 @@
   padding: 12px 0;
   font-size: 18px;
   text-align: center;
+}
+
+.table-row:hover {
+  background-color: rgba(250, 249, 249, 0.158); /* 기존보다 진한 색 */
+  cursor: pointer;
 }
 
 .table-header {
