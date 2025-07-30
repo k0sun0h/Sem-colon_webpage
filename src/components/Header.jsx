@@ -62,7 +62,7 @@ function Header() {
       <nav className="nav">
         <NavLink to="/" end>동아리 소개</NavLink><div> | </div>
         <NavLink to="/members">동아리원</NavLink><div> | </div>
-        <NavLink to="/projects">스터디 & 프로젝트</NavLink><div> | </div>
+        <NavLink to="/studyProject">스터디 & 프로젝트</NavLink><div> | </div>
         <NavLink to="/recruit">모집</NavLink>
       </nav>
       <div className='header-buttons'>

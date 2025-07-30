@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import Introduce from './pages/Introduce';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import StudyProject from './pages/Study&Project';
 
 function App() {
   return (
@@ -34,6 +35,8 @@ function App() {
               {/* /login 경로로 접근하면 Login 페이지가 렌더링됨 */}
               <Route path="/signup" element={<SignUp />} />
               {/* /signup 경로로 접근하면 SignUp 페이지가 렌더링됨 */}
+              <Route path="/studyProject" element={<StudyProject />} />
+              {/* /studyProject 경로로 접근하면 StudyProject 페이지가 렌더링됨 */}
             </Routes>
 
           </div>
