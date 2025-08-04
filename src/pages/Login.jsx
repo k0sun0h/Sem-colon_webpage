@@ -13,11 +13,24 @@ function Login() {
         return;
     }
 
+
+    const registeredUser = JSON.parse(localStorage.getItem('registeredUser'));
+    if (!registeredUser || registeredUser.email !== email) {
+      alert('등록된 사용자가 없거나 이메일이 일치하지 않습니다.');
+      return;
+    }
+    if (!password || registeredUser.password !== password) {
+      alert('비밀번호가 일치하지 않습니다.');
+      return;
+    }
     const userInfo = {
-        name: '김선혜',
-        major: '컴퓨터SW학과',
-        email: 'kimsunhye1225@suwon.ac.kr',
+      name: registeredUser.name,
+      major: registeredUser.major,
+      email: registeredUser.email,
+      profileImage: registeredUser.profileImage || null,
     };
+
+
 
     // 상태 저장
     localStorage.setItem('isLoggedIn', 'true');

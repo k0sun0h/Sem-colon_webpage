@@ -1,0 +1,156 @@
+/* 가운데 정렬된 박스 컨테이너 */
+.add-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100vh;
+  display: flex;                  /* flex로 자식 중앙 배치 */
+  justify-content: center;
+  align-items: center;
+}
+
+/* 반투명 회색 박스 (입력 폼 영역) */
+.add-box {
+  width: 1100px;
+  height: 600px;
+  background-color: rgba(255, 255, 255, 0.08);  /* 반투명 흰색 */
+  border-radius: 20px;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 60px;
+  gap: 30px;
+}
+
+/* 상단 제목 텍스트 */
+.add-title {
+  font-size: 36px;
+  color: white;
+  align-self: center;
+}
+
+/* 사진 업로드 + 입력폼을 나란히 배치 */
+.add-content {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+/* 원형 사진 업로드 버튼 감싸는 영역 */
+.photo-upload-wrapper {
+  margin-top: 20px;
+  align-self: flex-start;
+  margin-left: -30px;  /* 약간 왼쪽으로 보정 */
+}
+
+/* 실제 원형 버튼 스타일 */
+.photo-circle {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.85);  /* 거의 흰색 */
+  color: black;
+  font-size: 35px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.photo-circle:hover {
+  background-color: rgba(255, 255, 255, 1); /* hover 시 완전 흰색 */
+}
+
+/* 전체 입력 폼 영역 */
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  color: white;
+}
+
+/* 입력 줄 하나 (이름, 파트 등) */
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;  /* 줄바꿈 허용 */
+}
+
+/* 각 입력 라벨 */
+.form-row label {
+  font-size: 30px;
+  font-weight: 600;
+  color: white;
+}
+
+/* 공통 입력 박스 스타일 */
+.input-box {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  font-size: 25px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* 포트폴리오 오른쪽 여백 조정 (연락처와 간격 맞춤) */
+.form-row input.input-box.medium:last-of-type {
+  margin-left: 42px;
+}
+
+/* 한 줄 소개란 여백 조정 */
+.form-row input.input-box.long {
+  margin-left: 12px;
+}
+
+/* 입력 박스 크기 구분 */
+.input-box.small {
+  width: 160px;
+}
+.input-box.medium {
+  width: 400px;
+}
+.input-box.long {
+  width: 400px;
+}
+
+/* 등록 버튼 */
+.submit-button {
+  margin-top: auto;
+  align-self: center;
+  width: 100px;
+  height: 40px;
+  background-color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-button:hover {
+  background-color: #ddd;
+}
+
+/* 파트 입력 부분 내에서 좌우 간격을 위한 래퍼 */
+.part-wrapper {
+  margin-left: 32px;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.photo-preview {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}

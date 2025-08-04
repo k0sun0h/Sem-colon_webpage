@@ -1,13 +1,12 @@
-// 리액트 앱의 진입점
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
 
-// ReactDOM.createRoot()로 HTML의 #root에 React 앱(App 컴포넌트 전체)을 렌더링
-// App.jsx가 리액트 앱의 시작 화면
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+// src/main.jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <BrowserRouter>
     <App />
-  </StrictMode>,
-)
+  </BrowserRouter>
+);

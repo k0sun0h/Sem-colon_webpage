@@ -152,15 +152,28 @@
 .profile-img {
   width: 100px;
   height: 100px;
-  margin: 10px auto;
+
+  margin: 10px 0 20px 30px;
+
   background-color: #ddd;
   border-radius: 50%;
+}
+
+
+.profile-content > div:not(.profile-img) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  /* 왼쪽 정렬 */
+  margin-left: 10px;         /* 이미지와의 간격 */
 }
 
 .email {
   font-size: 14px;
   color: #666;
   margin-bottom: 10px;
+
+  transform: translateX(-25px); /* ← 왼쪽으로 10px 이동 */
+
 }
 
 .apply-status {
@@ -194,4 +207,6 @@
 
 .profile-buttons button:hover {
   background-color: #ccc;
+
 }
+

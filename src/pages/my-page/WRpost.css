@@ -1,0 +1,184 @@
+/* 전체 초기화: 마진/패딩 제거 및 박스 모델 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 고정 배경 이미지 설정 (화면 전체에 깔림) */
+.fx-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../../public/suwon-image.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+/* 배경 위 어두운 반투명 오버레이 */
+.fx-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.8;
+}
+
+.WR-title {
+  position: relative;
+  z-index: 3;
+  font-size: 50px;             /* 글자 크기 */
+  color: white;                /* 흰색 글씨 */
+  font-weight: bold;           /* 굵은 글씨 */
+  text-align: center;          /* 가운데 정렬 */
+  margin-top: 5px;           /* 위쪽 마진 (겹치게 하거나 위치 조정 목적) */
+}
+
+/* 중앙 회색 반투명 박스 */
+.con-box {
+  position: relative;
+  width: 1320px;
+  height: 549px; /* 박스 높이 고정 (1줄당 50px 기준 최대 9줄 + 여백 포함) */
+  background-color: rgba(217, 217, 217, 0.2); /* 회색 반투명 배경 */
+  border-radius: 20px;
+  margin: 40px auto; /* 위아래 여백 + 가운데 정렬 */
+  z-index: 2; /* 배경보다 위 */
+}
+
+/* 상단 흰색 가로선 */
+.sp-line {
+  position: absolute;
+  top: 70px; /* 박스 내부 기준 위치 */
+  left: 50%;
+  transform: translateX(-50%); /* 가운데 정렬 */
+  width: 1265px;
+  height: 5px;
+  border: 1px; /* (필요 없으면 제거 가능) */
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.2); /* 흰색 반투명 */
+  z-index: 3;
+}
+
+.vertical {
+  position: absolute;
+  top: 75px;     /* 가로선 아래부터 시작 */
+  height: 461px; /* 가로선 포함 높이 조정 */
+  width: 3px;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 3;
+}
+
+/* 세로선 위치 조절 (좌측 기준 픽셀값) */
+.vertical.line-1 {
+  left: calc(100% / 3);
+}
+
+.vertical.line-2 {
+  left: calc(100% / 3 * 2);
+}
+
+/* 상단 라벨 공통 스타일 */
+.label-WRtitle {
+  position: absolute;
+  top: 25px;       /* content-box 내부 상단 여백 */
+  left: 16%;     /* 기본 위치 (제목 열) */
+  font-size: 20px;
+  color: white;
+  font-weight: 500;
+  z-index: 4;
+}
+
+/* 라벨 위치 조정: 열마다 수평 위치 다름 */
+.label-WRdate { left: 47%; }   /* 모집 날짜 */
+.label-people { left: 80%; }     /* 지원자 수 */
+
+/* WRpost.css */
+.post-header,
+.post-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -20px;
+  align-items: center;
+  width: 100%;
+  padding: 0 60px;
+  font-size: 18px;
+  color: white;
+}
+
+.post-header {
+  font-weight: bold;
+  height: 50px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.post-row {
+  font-size: 20px;
+  height: 70px;
+}
+
+/* 공통 셀: 동일한 비율 */
+.cell {
+  flex: 1;
+  padding: 0 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 개별 셀 정렬 (중앙선 기준 맞춤) */
+.title-cell {
+  text-align: center;
+}
+
+.partial-move1 {
+  display: flex;
+  position: relative;
+  left: 0%;
+}
+
+
+.date-cell {
+  text-align: left;
+}
+
+.partial-move2 {
+  position: relative;
+  margin-left: 20%;
+  display: inline-block;
+}
+
+.people-cell {
+  text-align: left;
+}
+
+.partial-move3 {
+  position: relative;
+  margin-left: 57%;
+  display: inline-block;
+}
+
+/* 각 모집글 사이 간격 확보 */
+.post-row + .post-row {
+  margin-top: -8px;
+}
+
+/* 만약 글이 많아질 경우 스크롤 가능하도록 설정 (선택사항) */
+.con-box {
+  overflow-y: auto;     /* ← 스크롤 가능 */
+  padding-top: 110px;   /* 라벨, 가로선 공간 확보용 */
+  padding-bottom: 20px;
+}
+
+
+
+
+
+
+

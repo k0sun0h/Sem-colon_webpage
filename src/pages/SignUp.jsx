@@ -31,9 +31,16 @@ function Signup() {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setProfileImage(URL.createObjectURL(file));
-    }
-  };
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfileImage(reader.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    };
+
+
 
   const handleSignup = () => {
     if (!emailVerified) {

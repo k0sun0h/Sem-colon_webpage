@@ -1,0 +1,278 @@
+/* 전체 배경 이미지를 화면에 고정 */
+.fixed-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* 전체 뷰포트 너비 */
+  height: 100vh; /* 전체 뷰포트 높이 */
+  background-image: url('../public/back-ground-image.jpeg'); /* 배경 이미지 경로 */
+  background-size: cover;    /* 요소를 꽉 채움 */
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0; /* 맨 뒤에 위치 */
+}
+
+/* 배경 이미지 위에 검은 반투명 오버레이 추가 */
+.fixed-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.8; /* 80% 불투명 */
+}
+
+/* 콘텐츠 전체 영역 (배경 위로 올라옴) */
+.content {
+  position: relative;
+  margin-top: -85px;
+  margin-bottom: 75px;
+  z-index: 1; /* 배경 위 */
+}
+
+/* 작성 폼을 감싸는 박스 */
+.write-box {
+  position: relative;
+  top: -20px; /* 상단에서 60px만큼 떨어진 위치 (조절 가능) */
+  left: 50%;
+  transform: translateX(-50%); /* 가운데 정렬 */
+
+  width: 1320px;
+  min-height: 600px;
+  height: auto;
+  background-color: rgba(217, 217, 217, 0.2);
+  border-radius: 20px;
+  padding-top: 80px; /* 내부 콘텐츠 상단 여백도 함께 조정 (기존 110px에서 줄임) */
+  padding-bottom: 20px; /* 필요 시 추가 */
+}
+
+/* 상단 구분선 */
+.sepa-line {
+  position: absolute;
+  top: 95px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1265px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 3;
+}
+
+/* 상단 제목 텍스트 */
+.appl-title {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 30px;
+  color: white;
+  font-weight: 500;
+  z-index: 4;
+}
+
+/* 우측 상단 닫기 버튼 */
+.close-button {
+  position: absolute;
+  top: 33px;
+  right: 35px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 4;
+}
+
+/* 기본 정보 입력 폼 감싸는 영역 */
+.appl-form {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  z-index: 4;
+}
+
+/* 각 입력 항목 묶음 (기본) */
+.appl-form-group {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* 라벨 공통 스타일 */
+.appl-label {
+  color: white;
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+/* input 공통 스타일 */
+.appl-input {
+  width: 180px;
+  padding: 5px 8px;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+}
+
+/* 연락처 입력 전용 그룹 */
+.contact-input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: transparent;
+}
+
+/* 연락처 앞 '010-' 부분 */
+.contact-prefix {
+  color: white;
+  font-size: 16px;
+  line-height: 1.4;
+  margin-right: 4px;
+  white-space: nowrap;
+}
+
+/* 연락처 입력 input */
+.contact-input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 16px;
+  line-height: 1.4;
+  width: 100px;
+  padding: 0;
+  margin: 0;
+}
+
+/* 연락처 placeholder 스타일 */
+.contact-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* 지원 동기 섹션 전용 (줄바꿈 포함) */
+.motivation-group {
+  flex-direction: row;
+  align-items: flex-start;
+  margin-top: 30px;
+  margin-left: 87px;
+}
+
+/* 지원 동기 라벨 */
+.motivation-label {
+  margin-top: 8px;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+/* 지원 동기 입력 박스 (textarea) */
+.motivation-input {
+  margin-top: 8px;
+  width: 950px;
+  height: 200px;
+  resize: none;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  margin-left: 15px;
+  padding: 10px;
+}
+
+/* 포트폴리오 및 스택 입력 공통 그룹 */
+.portfolio-group,
+.stack-group {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-left: 88px;
+}
+
+/* 포트폴리오 / 스택 라벨 및 스페이서 (동일 너비 보장) */
+.portfolio-label,
+.stack-label,
+.portfolio-label-spacer,
+.stack-label-spacer {
+  width: 260px;
+  font-size: 16px;
+  color: white;
+  white-space: nowrap;
+}
+
+/* 라벨 스페이서 (라벨 대신 자리만 차지) */
+.portfolio-label-spacer,
+.stack-label-spacer {
+  height: 35px;
+}
+
+/* 입력 필드 공통 스타일 */
+.portfolio-input,
+.stack-input {
+  width: 750px;
+  height: 35px;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  margin-left: 15px;
+  padding: 6px 10px;
+}
+
+/* + 버튼 스타일 */
+.add-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 6px;
+  margin-left: -25px;
+  line-height: 1;
+}
+
+/* 포트폴리오 라벨 대체 spacer 위치 조절 */
+.portfolio-label-spacer {
+  display: inline-block;
+  width: 260px;
+  height: 35px;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+/* 스택 라벨 대체 spacer 위치 조절 */
+.stack-label-spacer {
+  display: inline-block;
+  width: 260px;
+  height: 35px;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+/* 작성 완료 버튼 */
+.finish-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 100px;
+  height: 33px;
+  border-radius: 15px;
+  border: none;
+  background-color: white;
+  color: black;
+  font-weight: 600;
+  cursor: pointer;
+}
