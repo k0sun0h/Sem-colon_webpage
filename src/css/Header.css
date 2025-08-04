@@ -1,0 +1,197 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 30px;
+  position: relative;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.05em;
+  font-family: 'Julius Sans One', sans-serif;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 600;
+  color: white;
+}
+
+.nav {
+  font-family: 'SeoulNamsan', sans-serif;
+  display: flex;
+  gap: 40px;
+  font-weight: 500;
+  color: white;
+  font-size: 20px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: white;
+  opacity: 0.6;
+}
+
+.nav div {
+  opacity: 0.6;
+}
+
+.nav a.active {
+  opacity: 1;
+}
+
+.header-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.apply-button {
+  font-family: 'SeoulNamsan', sans-serif;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 8px 30px;
+  border: none;
+  cursor: pointer;
+}
+
+
+/* 마이페이지 팝업 */
+.my-page-icon {
+  margin-left: 30px;
+  font-size: 45px;
+  color: white;
+  cursor: pointer;
+}
+
+.my-page-icon:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.popup-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.popup-buttons button {
+  padding: 8px;
+  width: 130px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background-color: #eeeeee;
+  transition: background-color 0.2s ease;
+}
+
+.popup-buttons button:hover {
+  background-color: #cccccc;
+}
+
+.user-popup {
+  position: absolute;
+  top: 80px;
+  right: 30px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 20px;
+  width: 400px;
+  z-index: 1000;
+  text-align: center;
+}
+
+/* 로그인 전 상태 */
+.login-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.login-content p {
+  margin: 40px 0;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.login-buttons button {
+  flex: 1;
+  padding: 8px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.login-buttons button:hover {
+  background-color: #ccc;
+}
+
+/* 로그인 후 상태 */
+.profile-content {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-content div h2,
+.profile-content div p {
+  margin-top: 13px;
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  margin: 10px auto;
+  background-color: #ddd;
+  border-radius: 50%;
+}
+
+.email {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.apply-status {
+  text-align: left;
+  margin: 10px 0;
+}
+
+.apply-status a {
+  text-decoration: none;
+  color: black;
+}
+
+.apply-status a:hover {
+  font-weight: bold;
+}
+
+.profile-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-buttons button {
+  padding: 8px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.profile-buttons button:hover {
+  background-color: #ccc;
+}
