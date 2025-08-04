@@ -1,0 +1,50 @@
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -3; /* 배경이 가장 뒤에 */
+}
+
+.video-background::before {
+  content: "";
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -4; /* 배경 어두운 레이어 */
+}
+
+.video-iframe iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120vw;
+  height: 120vh;
+  transform: translate(-50%, -50%);
+  pointer-events: none; /* 영상 클릭 불가 */
+  z-index: -3; /* 영상 레이어 */
+  border: none;
+  overflow: hidden;
+}
+
+/* 어두운 오버레이 */
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: -2; /* 오버레이가 영상 위에 위치 */
+  pointer-events: none; /* 오버레이 클릭 불가 */
+}
+
+/* 콘텐츠 영역 (메인 텍스트, 로고, etc.) */
+.mainPage, .mainText, .main-logo, .nextSection {
+  position: relative;
+  z-index: 8; /* 배경 위에, 영상보다 높은 값 */
+}

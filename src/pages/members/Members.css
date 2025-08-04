@@ -1,0 +1,223 @@
+/* 전체 초기화: 마진/패딩 제거 및 박스 모델 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 고정 배경 이미지 설정 (화면 전체에 깔림) */
+.fix-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../../public/Members-background.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+/* 배경 위 어두운 반투명 오버레이 */
+.fix-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.8;
+}
+
+/* 스크롤 가능한 전체 콘텐츠 영역 */
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 50px 0;
+}
+
+/* 전체 멤버 카드 섹션 wrapper */
+.members-wrapper {
+  position: relative;
+  z-index: 1;
+  padding: 100px 50px;
+  color: white;
+}
+
+/* 상단 탭 영역 (운영진 / 현재 부원 / 졸업 부원) */
+.members-category {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+/* 개별 탭 버튼 */
+.members-tab {
+  background-color: rgba(255, 255, 255, 0.1); /* 공통 배경 */
+  border: 1px solid white;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+/* 탭 hover 효과 */
+.members-tab:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* 활성화된 탭: 강조 (배경색은 유지) */
+.members-tab.active {
+  font-weight: bold;
+  /* 배경, 색상은 그대로 유지 */
+}
+
+/* 멤버 카드 그리드 레이아웃 (반응형) */
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  gap: 60px;
+  margin-top: 30px;
+}
+
+/* 개별 멤버 카드 스타일 */
+.member-card {
+  display: flex;
+  gap: 30px;
+  padding: 40px 60px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid white;
+  border-radius: 20px;
+  max-width: 670px;
+  min-height: 400px;
+  color: white;
+  position: relative;
+  align-items: flex-start;
+}
+
+/* 좌측 이미지 wrapper */
+.member-image-wrapper {
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+/* 프로필 이미지 */
+.member-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: white;
+}
+
+/* 우측 정보 컨테이너 */
+.member-info {
+  flex-grow: 1;
+}
+
+/* 이름 */
+.member-name {
+  margin-left: 45px;
+  font-size: 75px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+/* 직책 (회장, 부원 등) */
+.member-role {
+  display: inline-block;
+  font-size: 16px;
+  padding: 4px 10px;
+  margin-left: 50px;
+  margin-bottom: 16px;
+  border: 1px solid white;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+/* (사용되지 않음) - 포지션 대형 텍스트 */
+.member-position {
+  font-size: 50px;
+  border: 1px solid white;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+/* 멤버 한 줄 소개 문장 */
+.member-desc {
+  font-size: 40px;
+  font-weight: 400;
+  color: white;
+  margin-left: -175px;
+  margin-bottom: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 담당 파트 */
+.member-part {
+  font-size: 20px;
+  color: #ccc;
+  margin-left: -175px;
+  margin-bottom: 30px;
+}
+
+/* 하단 포트폴리오 + 연락처 영역 */
+.member-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+/* 포트폴리오 링크 */
+.portfolio-link {
+  font-size: 25px;
+  color: white;
+  margin-left: -175px;
+  text-decoration: underline;
+}
+
+/* 연락처 정보 */
+.contact {
+  font-size: 25px;
+  margin-left: 200px;
+  opacity: 0.9;
+}
+
+/* + 멤버 추가 버튼 (화면 우측 하단 고정) */
+.add-member-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 15%;
+  background-color: rgb(63, 63, 63);
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  border: 2px, solid, white; /* ⚠️ 쉼표 제거 필요: border: 2px solid white; */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  cursor: pointer;
+  z-index: 100;
+  transition: transform 0.2s ease;
+}
+
+/* 버튼 hover 효과 */
+.add-member-button:hover { 
+  transform: scale(1.1);
+}
+
+/* 현재 부원 강조 카드 (색 반전) */
+.member-card.current {
+  background-color: white;
+  color: black;
+}
