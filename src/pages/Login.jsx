@@ -13,6 +13,7 @@ function Login() {
         return;
     }
 
+
     const registeredUser = JSON.parse(localStorage.getItem('registeredUser'));
     if (!registeredUser || registeredUser.email !== email) {
       alert('등록된 사용자가 없거나 이메일이 일치하지 않습니다.');
@@ -28,6 +29,7 @@ function Login() {
       email: registeredUser.email,
       profileImage: registeredUser.profileImage || null,
     };
+
 
 
     // 상태 저장

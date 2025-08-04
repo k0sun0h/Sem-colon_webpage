@@ -1,0 +1,161 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 배경 이미지 */
+.study-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./studyProject-logo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.study-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.8;
+}
+
+/* 상세 페이지 컨테이너 */
+.study-detail-container {
+  position: relative;
+  z-index: 1;
+  padding: 50px 100px;
+  color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* 상단 제목 + 설명 */
+.study-header h1 {
+  font-size: 45px;
+  margin-bottom: 20px;
+}
+
+.study-header p {
+  line-height: 1.6;
+  margin-bottom: 10px;
+  color: #cacaca;
+}
+
+.project-description p {
+  font-size: 18px !important;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+/* 진행률 + 체크리스트 박스 */
+.progress-section {
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  padding: 30px 50px;
+}
+
+/* 상단 진행률 라벨 */
+.progress-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 35px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #888;
+  padding-bottom: 12px;
+}
+
+/* 진행률 숫자 input */
+.progress-title input[type="number"] {
+  width: 60px;
+  padding: 4px 6px;
+  font-size: 20px;
+  border: 1px solid white;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  margin-left: 10px;
+  text-align: center;
+}
+
+.progress-title span {
+    margin: 0 20px;
+}
+
+/* 주차별 테이블 */
+.week-table {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 0.3fr;
+  row-gap: 12px;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+.week-table span {
+  display: flex;
+  align-items: center;
+}
+
+/* 참여 인원 */
+.member-list {
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  padding: 60px 80px;
+  text-align: center;
+}
+
+.member-num {
+  font-size: 35px;
+  margin-bottom: 30px;
+}
+
+.member-icons {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
+.member-circle {
+  width: 150px !important;
+  height: 150px !important;
+  background-color: white;
+  border-radius: 50%;
+  margin: 0 auto 20px auto !important;
+}
+
+.member-info {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 5px;
+}
+
+.member-role {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 6px;
+}
+
+.member-name {
+  font-size: 25px !important;
+}
+
+/* 체크박스 */
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: white;
+}

@@ -1,5 +1,6 @@
 // 전체 레이아웃 (앱 전체를 감싸는 컴포넌트)
 // Header, Footer, 페이지별 Route가 설정됨
+
 import {  Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
@@ -72,6 +73,7 @@ useEffect(() => {
 
 
 
+function App() {
   return (
 
       <div>
@@ -119,3 +121,4 @@ useEffect(() => {
 }
 
 export default App;
+

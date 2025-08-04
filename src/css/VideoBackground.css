@@ -47,4 +47,6 @@
 .mainPage, .mainText, .main-logo, .nextSection {
   position: relative;
   z-index: 8; /* 배경 위에, 영상보다 높은 값 */
+
 }
+
