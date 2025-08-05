@@ -1,4 +1,4 @@
-import './Applystatus.css';
+import '../../css/Applystatus.css';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -50,13 +50,17 @@ function Applystatus() {
           {myApplications.map((app, index) => (
             <div className="ap-row" key={index}>
               <div className="Ap-title">{app.postTitle}</div>
-              <div className="Ap-status">지원 완료</div>
+              <div className="Ap-status">
+                {app.decision === 'accepted' ? '수락됨✅' : app.decision === 'rejected' ? '거절됨❌' : '대기 중'}
+                </div>
               <div className="Ap-action" onClick={() => navigate(`/study/detail/${app.postId}`)}>
-                🔍
+                지원글 확인🔍
                 </div>
-                <div className="Ap-cancel" onClick={() => handleCancel(app.postId, app.applicantEmail)}>
-                  ❌ 
-                </div>
+                {(!app.decision || app.decision === null) && (
+                  <div className="Ap-cancel" onClick={() => handleCancel(app.postId, app.applicantEmail)}>
+                    지원 취소❌
+                    </div>
+                  )}
                 </div>
               ))}         
         </div>

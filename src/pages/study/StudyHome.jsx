@@ -12,7 +12,7 @@ import Write from './studypage/Write';
 import Appl from './studypage/Appl';
 import Detail from './studypage/Detail'
 // StudyHome 전용 CSS import
-import './StudyHome.css';
+import '../../css/StudyHome.css';
 
 function StudyHome() {
   // formDataList 상태 선언 (로컬스토리지에 저장된 값이 있으면 불러오고, 없으면 빈 배열)

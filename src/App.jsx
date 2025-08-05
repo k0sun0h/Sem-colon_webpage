@@ -25,6 +25,10 @@ import Applystatus from './pages/my-page/Applystatus';
 
 import EditProfile from './pages/my-page/EditProfile';
 
+import Applicants from './pages/my-page/Applicants'; // 경로에 맞게 조정
+
+import ViewAppl from './pages/my-page/ViewAppl';
+
 
 
 
@@ -98,6 +102,10 @@ useEffect(() => {
             <Route path="/my-page/Applystatus" element={<Applystatus />} />
 
             <Route path="/edit-profile" element={<EditProfile />} />
+
+            <Route path="/applicants/:postId" element={<Applicants />} />
+            
+            <Route path="/view-appl/:postId/:email" element={<ViewAppl />} />
 
             <Route path="/members" element={<Members 
             currentMembers={currentMembers}

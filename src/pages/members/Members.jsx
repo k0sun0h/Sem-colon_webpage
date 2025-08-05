@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 // 스타일시트 import
-import './Members.css';
+import '../../css/Members.css';
 
 function Members({ currentMembers, graduatedMembers }) {
   const navigate = useNavigate();            // 페이지 이동 함수

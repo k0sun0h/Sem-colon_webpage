@@ -12,7 +12,7 @@
   left: 0;
   width: 100vw;                 /* 뷰포트 너비 전체 */
   height: 100vh;                /* 뷰포트 높이 전체 */
-  background-image: url('../../public/back-ground-image.jpeg'); /* 배경 이미지 경로 */
+  background-image: url('../public/back-ground-image.jpeg'); /* 배경 이미지 경로 */
   background-size: cover;       /* 이미지가 요소를 완전히 덮도록 크기 조절 */
   background-position: center;  /* 가운데 정렬 */
   background-repeat: no-repeat; /* 반복 없음 */

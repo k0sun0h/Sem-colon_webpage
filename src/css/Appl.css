@@ -276,3 +276,18 @@
   font-weight: 600;
   cursor: pointer;
 }
+
+.portfolio-wrapper {
+  margin-left: 175px;           /* 라벨과 링크 사이 간격 */
+  padding: 10px 14px;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.portfolio-link {
+  display: inline-block;
+  font-size: 16px;
+  color: #00ccff;
+  word-break: break-word;
+}
+
