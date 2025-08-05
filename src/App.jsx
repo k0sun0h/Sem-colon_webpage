@@ -1,5 +1,6 @@
 // 전체 레이아웃 (앱 전체를 감싸는 컴포넌트)
 // Header, Footer, 페이지별 Route가 설정됨
+
 import {  Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
@@ -17,15 +18,17 @@ import StudyHome from './pages/study/StudyHome';
 
 // 동아리원 컴포넌트
 import Members from './pages/members/Members';
-import AddMember from './pages/members/add/Addmember'; // ⬅️ 이건 반드시 추가해야 함
 
+import AddMember from './pages/members/add/Addmember'; 
+
+// 마이페이지
 import WRpost from './pages/my-page/WRpost';
 
 import Applystatus from './pages/my-page/Applystatus';
 
 import EditProfile from './pages/my-page/EditProfile';
 
-import Applicants from './pages/my-page/Applicants'; // 경로에 맞게 조정
+import Applicants from './pages/my-page/Applicants'; 
 
 import ViewAppl from './pages/my-page/ViewAppl';
 
@@ -72,10 +75,6 @@ useEffect(() => {
 }, [graduatedMembers]);
 
 
-
-
-
-
   return (
 
       <div>
@@ -92,8 +91,10 @@ useEffect(() => {
             <Route path="/login" element={<Login />} />
               {/* /login 경로로 접근하면 Login 페이지가 렌더링됨 */}
 
-              <Route path="/signup" element={<SignUp />} />
+            <Route path="/signup" element={<SignUp />} />
               {/* /signup 경로로 접근하면 SignUp 페이지가 렌더링됨 */}
+
+            <Route path="/view-appl/:postId/:email" element={<ViewAppl />} />
 
             <Route path="/study/*" element={<StudyHome />} />
 
@@ -104,8 +105,6 @@ useEffect(() => {
             <Route path="/edit-profile" element={<EditProfile />} />
 
             <Route path="/applicants/:postId" element={<Applicants />} />
-            
-            <Route path="/view-appl/:postId/:email" element={<ViewAppl />} />
 
             <Route path="/members" element={<Members 
             currentMembers={currentMembers}
@@ -123,7 +122,8 @@ useEffect(() => {
         <Footer />
       </div>
 
-  );
-}
+  );}
+
 
 export default App;
+
