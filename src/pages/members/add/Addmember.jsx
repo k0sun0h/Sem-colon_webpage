@@ -1,5 +1,5 @@
 // 스타일 시트 import
-import '../../members/Members.css';              // 공통 스타일
+import '../../../css/Members.css';              // 공통 스타일
 import '../../../../src/css/AddMember.css';      // 추가 입력 전용 스타일
 
 // 라우팅 및 상태 훅 import

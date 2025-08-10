@@ -1,4 +1,4 @@
-import './WRpost.css';
+import '../../css/WRpost.css';
 import { useEffect, useState } from 'react';
 
 function WRpost() {

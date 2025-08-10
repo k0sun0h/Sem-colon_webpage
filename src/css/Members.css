@@ -12,7 +12,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url('../../public/Members-background.jpeg');
+  background-image: url('../public/Members-background.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -39,7 +39,7 @@
 }
 
 /* 전체 멤버 카드 섹션 wrapper */
-.members-wrapper {
+.members-wrapper1 {
   position: relative;
   z-index: 1;
   padding: 100px 50px;
@@ -47,14 +47,14 @@
 }
 
 /* 상단 탭 영역 (운영진 / 현재 부원 / 졸업 부원) */
-.members-category {
+.members-category1 {
   display: flex;
   gap: 10px;
   margin-bottom: 40px;
 }
 
 /* 개별 탭 버튼 */
-.members-tab {
+.members-tab1 {
   background-color: rgba(255, 255, 255, 0.1); /* 공통 배경 */
   border: 1px solid white;
   color: white;
@@ -67,18 +67,18 @@
 }
 
 /* 탭 hover 효과 */
-.members-tab:hover {
+.members-tab1:hover {
   background-color: rgba(255, 255, 255, 0.25);
 }
 
 /* 활성화된 탭: 강조 (배경색은 유지) */
-.members-tab.active {
+.members-tab1.active {
   font-weight: bold;
   /* 배경, 색상은 그대로 유지 */
 }
 
 /* 멤버 카드 그리드 레이아웃 (반응형) */
-.members-grid {
+.members-grid1 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
   gap: 60px;
@@ -86,7 +86,7 @@
 }
 
 /* 개별 멤버 카드 스타일 */
-.member-card {
+.member-card1 {
   display: flex;
   gap: 30px;
   padding: 40px 60px;
@@ -101,13 +101,13 @@
 }
 
 /* 좌측 이미지 wrapper */
-.member-image-wrapper {
+.member-image1-wrapper {
   flex-shrink: 0;
   margin-top: 5px;
 }
 
 /* 프로필 이미지 */
-.member-image {
+.member-image1 {
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -116,12 +116,12 @@
 }
 
 /* 우측 정보 컨테이너 */
-.member-info {
+.member-info1 {
   flex-grow: 1;
 }
 
 /* 이름 */
-.member-name {
+.member-name1 {
   margin-left: 45px;
   font-size: 75px;
   font-weight: bold;
@@ -129,7 +129,7 @@
 }
 
 /* 직책 (회장, 부원 등) */
-.member-role {
+.member-role1 {
   display: inline-block;
   font-size: 16px;
   padding: 4px 10px;
@@ -150,7 +150,7 @@
 }
 
 /* 멤버 한 줄 소개 문장 */
-.member-desc {
+.member-desc1 {
   font-size: 40px;
   font-weight: 400;
   color: white;
@@ -162,7 +162,7 @@
 }
 
 /* 담당 파트 */
-.member-part {
+.member-part1 {
   font-size: 20px;
   color: #ccc;
   margin-left: -175px;
@@ -186,7 +186,7 @@
 }
 
 /* 연락처 정보 */
-.contact {
+.contact1 {
   font-size: 25px;
   margin-left: 200px;
   opacity: 0.9;

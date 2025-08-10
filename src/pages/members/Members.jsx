@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 // 스타일시트 import
-import './Members.css';
+import '../../css/Members.css';
 
 function Members({ currentMembers, graduatedMembers }) {
   const navigate = useNavigate();            // 페이지 이동 함수
@@ -61,13 +61,13 @@ function Members({ currentMembers, graduatedMembers }) {
       <div className="fix-background"></div>
 
       {/* 전체 멤버 영역 */}
-      <div className="members-wrapper">
+      <div className="members-wrapper1">
         {/* 카테고리 탭 버튼 */}
-        <div className="members-category">
+        <div className="members-category1">
           {['운영진', '현재 부원', '졸업 부원'].map((label) => (
             <button
               key={label}
-              className={`members-tab ${category === label ? 'active' : ''}`}
+              className={`members-tab1 ${category === label ? 'active' : ''}`}
               onClick={() => setCategory(label)}
             >
               {label}
@@ -76,26 +76,26 @@ function Members({ currentMembers, graduatedMembers }) {
         </div>
 
         {/* 멤버 카드 그리드 */}
-        <div className="members-grid">
+        <div className="members-grid1">
           {/* 선택된 카테고리의 멤버가 없을 경우 */}
           {memberData[category].length === 0 ? (
             <div className="empty-message">아직 등록된 멤버가 없습니다.</div>
           ) : (
             memberData[category].map((member, idx) => (
-              <div className="member-card" key={idx}>
+              <div className="member-card1" key={idx}>
                 {/* 좌측 이미지 */}
                 <div className="member-left">
-                  <img src={member.image} alt={member.name} className="member-image" />
+                  <img src={member.image} alt={member.name} className="member-image1" />
                 </div>
                 {/* 우측 정보 영역 */}
                 <div className="member-right">
-                  <div className="member-name">{member.name}</div>
-                  <div className="member-role">
+                  <div className="member-name1">{member.name}</div>
+                  <div className="member-role1">
                     {category === '졸업 부원' ? '졸업생' : member.position || '부원'}
                   </div>
-                  <div className="member-desc">{member.description}</div>
-                  <div className="member-part">파트: {member.part}</div>
-                  <div className="member-footer">
+                  <div className="member-desc1">{member.description}</div>
+                  <div className="member-part1">파트: {member.part}</div>
+                  <div className="member-footer1">
                     <a
                       href={member.portfolio}
                       target="_blank"
@@ -104,7 +104,7 @@ function Members({ currentMembers, graduatedMembers }) {
                     >
                       포트폴리오 보기
                     </a>
-                    <span className="contact">{member.contact}</span>
+                    <span className="contact1">{member.contact}</span>
                   </div>
                 </div>
               </div>
