@@ -26,9 +26,6 @@ import Applystatus from './pages/my-page/Applystatus';
 
 import EditProfile from './pages/my-page/EditProfile';
 
-
-
-
 function App() {
   // 모집글 데이터를 상태로 관리
   const [formDataList, setFormDataList] = useState(() => {
@@ -47,7 +44,7 @@ function App() {
     setFormDataList((prev) => [...prev, newData]);
   };
 
-// ✅ currentMembers를 localStorage에서 불러오기
+  // ✅ currentMembers를 localStorage에서 불러오기
   const [currentMembers, setCurrentMembers] = useState(() => {
     const saved = localStorage.getItem('currentMembers');
     return saved ? JSON.parse(saved) : [];
@@ -59,21 +56,15 @@ function App() {
   }, [currentMembers]);  
 
   // 졸업 부원 상태
-const [graduatedMembers, setGraduatedMembers] = useState(() => {
-  const saved = localStorage.getItem('graduatedMembers');
-  return saved ? JSON.parse(saved) : [];
-});
+  const [graduatedMembers, setGraduatedMembers] = useState(() => {
+    const saved = localStorage.getItem('graduatedMembers');
+    return saved ? JSON.parse(saved) : [];
+  });
 
-useEffect(() => {
-  localStorage.setItem('graduatedMembers', JSON.stringify(graduatedMembers));
-}, [graduatedMembers]);
+  useEffect(() => {
+    localStorage.setItem('graduatedMembers', JSON.stringify(graduatedMembers));
+  }, [graduatedMembers]);
 
-
-
-
-
-
-function App() {
   return (
 
       <div>
@@ -119,6 +110,4 @@ function App() {
 
   );
 }
-
 export default App;
-
