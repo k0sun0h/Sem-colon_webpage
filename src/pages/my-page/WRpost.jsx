@@ -1,5 +1,6 @@
 import '../../css/WRpost.css';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function WRpost() {
   const [postList, setPostList] = useState([]);
@@ -31,6 +32,8 @@ function WRpost() {
   return applicants.filter(app => app.postId === postId).length;
 };
 
+const navigate = useNavigate();
+
 
   return (
     <>
@@ -57,7 +60,9 @@ function WRpost() {
                 <span className="partial-move2">{post.recruitStart} ~ {post.recruitEnd}</span>
               </div>
               <div className="cell people-cell">
-                <span className="partial-move3">{countApplicantsForPost(post.id)}명</span>
+                <span className="partial-move3 clickable"
+                onClick={() => navigate(`/applicants/${post.id}`)}>
+                  {countApplicantsForPost(post.id)}명</span>
               </div>
             </div>
           ))}

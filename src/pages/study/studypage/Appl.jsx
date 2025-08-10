@@ -65,7 +65,13 @@ function Appl({ dataList }) {
       postId: id,
       applicantEmail: user.email,
       submittedAt: new Date().toISOString(),
-      postTitle: data.title
+      postTitle: data.title,
+      name,
+      department,
+      contact,
+      motivation,
+      portfolioLinks,
+      techStacks
     };
 
     localStorage.setItem('applicants', JSON.stringify([...existingApplicants, applicantData]));

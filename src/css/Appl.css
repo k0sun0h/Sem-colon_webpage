@@ -276,3 +276,50 @@
   font-weight: 600;
   cursor: pointer;
 }
+
+.portfolio-wrapper {
+  margin-left: 175px;           /* 라벨과 링크 사이 간격 */
+  padding: 10px 14px;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.portfolio-link {
+  display: inline-block;
+  font-size: 16px;
+  color: #00ccff;
+  word-break: break-word;
+}
+
+/* ===== ViewAppl 전용 읽기모드 보정 ===== */
+
+/* 읽기 전용 값(특히 기술 스택)을 흰색으로 통일 */
+.stack-value {
+  width: 750px;
+  margin-left: 15px;
+  color: white;
+  font-size: 16px;
+  line-height: 1.6;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* 혹시 다른 CSS가 덮어쓰면 강제 적용 */
+.stack-group .stack-value, 
+.stack-group .stack-value * {
+  color: white !important;
+}
+
+/* 읽기 전용 입력/텍스트영역 비활성화 시 시각적 구분 */
+.appl-input:disabled,
+.contact-input:disabled,
+.motivation-input:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+/* ViewAppl 내부 링크(포트폴리오)가 배경에서 잘 보이도록 */
+.portfolio-wrapper a.portfolio-link {
+  text-decoration: underline;
+}
+

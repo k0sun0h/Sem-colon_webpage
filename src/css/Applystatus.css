@@ -153,8 +153,9 @@
 }
 
 .Ap-action {
-  left: 78%;
+  left: 72%;
   color: white;
+  width: 150px;
   cursor: pointer;
   transition: transform 0.2s;
 }
@@ -165,8 +166,8 @@
 
 /* 지원 취소 버튼 */
 .Ap-cancel {
-  left: 85%;
-  color: #ff4d4d;
+  left: 88%;
+  color: white;
   cursor: pointer;
   transition: transform 0.2s, color 0.2s;
 }
@@ -175,7 +176,6 @@
   color: #ff1a1a;
   transform: scale(1.1);
 }
-
 
 
 

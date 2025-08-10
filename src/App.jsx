@@ -32,6 +32,10 @@ import Applystatus from './pages/my-page/Applystatus';
 
 import EditProfile from './pages/my-page/EditProfile';
 
+import Applicants from './pages/my-page/Applicants'; 
+
+import ViewAppl from './pages/my-page/ViewAppl';
+
 function App() {
   // 모집글 데이터를 상태로 관리
   const [formDataList, setFormDataList] = useState(() => {
@@ -103,6 +107,10 @@ function App() {
             <Route path="/my-page/Applystatus" element={<Applystatus />} />
 
             <Route path="/edit-profile" element={<EditProfile />} />
+
+            <Route path="/applicants/:postId" element={<Applicants />} />
+
+            <Route path="/view-appl/:postId/:email" element={<ViewAppl />} />
 
             <Route path="/members" element={<Members 
             currentMembers={currentMembers}

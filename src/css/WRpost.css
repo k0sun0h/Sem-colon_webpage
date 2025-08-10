@@ -148,6 +148,12 @@
   text-align: left;
 }
 
+.partial-move0 {
+  position: relative;
+  margin-left: 32%;
+  display: inline-block;
+}
+
 .partial-move2 {
   position: relative;
   margin-left: 20%;
@@ -176,7 +182,56 @@
   padding-bottom: 20px;
 }
 
+/* WRpost.css 맨 아래 추가 */
+.clickable {
+  cursor: pointer;
 
+}
+
+.decision-buttons {
+  display: flex;
+  gap: 20px; /* 버튼 사이 간격 */
+  justify-content: center;
+  align-items: center;
+}
+
+.accept-btn,
+.reject-btn {
+  padding: 6px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: transparent; /* 배경 제거 */
+  color: white; /* 흰색 글씨 */
+  transition: transform 0.2s ease;
+}
+
+.accept-btn:hover,
+.reject-btn:hover {
+  transform: scale(1.05);
+}
+
+.decision-buttons{
+  align-self: flex-start;
+  margin-left: -90px;
+}
+
+.accept-btn {
+  font-size: 18px;
+  color: white; 
+}
+
+.reject-btn {
+  font-size: 18px;
+  color: white; 
+}
+
+.name-clickable {
+  cursor: pointer;
+
+}
 
 
 
