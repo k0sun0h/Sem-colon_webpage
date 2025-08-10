@@ -13,6 +13,12 @@ import Introduce from './pages/Introduce';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 
+import StudyAndProject from './pages/Study&Project.jsx';
+
+import StudyDetail from './pages/StudyDetail.jsx';
+
+import ProjectDetail from './pages/ProjectDetail.jsx';
+
 // 스터디 & 프로젝트 관련 컴포넌트 (폴더: pages/study)
 import StudyHome from './pages/study/StudyHome';
 
@@ -83,6 +89,12 @@ function App() {
 
               <Route path="/signup" element={<SignUp />} />
               {/* /signup 경로로 접근하면 SignUp 페이지가 렌더링됨 */}
+
+              <Route path="/study&project" element={<StudyAndProject />} />
+
+             <Route path="/studydetail" element={<StudyDetail />} />
+
+             <Route path="/projectdetail" element={<ProjectDetail />} />
 
             <Route path="/study/*" element={<StudyHome />} />
 
