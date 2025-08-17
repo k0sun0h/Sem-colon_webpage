@@ -3,56 +3,11 @@
   position: relative;
   width: 1320px;
   height: 549px; /* 박스 높이 고정 (1줄당 50px 기준 최대 9줄 + 여백 포함) */
-  background-color: rgba(217, 217, 217, 0.2); /* 회색 반투명 배경 */
   border-radius: 20px;
   margin: 40px auto; /* 위아래 여백 + 가운데 정렬 */
   z-index: 2; /* 배경보다 위 */
 }
 
-/* 상단 흰색 가로선 */
-.separator-line {
-  position: absolute;
-  top: 70px; /* 박스 내부 기준 위치 */
-  left: 50%;
-  transform: translateX(-50%); /* 가운데 정렬 */
-  width: 1265px;
-  height: 5px;
-  border: 1px; /* (필요 없으면 제거 가능) */
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.2); /* 흰색 반투명 */
-  z-index: 3;
-}
-
-/* 공통 세로선 스타일 */
-.vertical-line {
-  position: absolute;
-  top: 75px;     /* 가로선 아래부터 시작 */
-  height: 461px; /* 가로선 포함 높이 조정 */
-  width: 3px;
-  background-color: rgba(255, 255, 255, 0.2);
-  z-index: 3;
-}
-
-/* 세로선 위치 조절 (좌측 기준 픽셀값) */
-.vline-1 { left: 560px; }
-.vline-2 { left: 752px; }
-.vline-3 { left: 980px; }
-
-/* 상단 라벨 공통 스타일 */
-.label-title {
-  position: absolute;
-  top: 25px;       /* content-box 내부 상단 여백 */
-  left: 275px;     /* 기본 위치 (제목 열) */
-  font-size: 20px;
-  color: white;
-  font-weight: 500;
-  z-index: 4;
-}
-
-/* 라벨 위치 조정: 열마다 수평 위치 다름 */
-.label-recruit { left: 620px; }   /* 모집 인원 */
-.label-date { left: 830px; }     /* 모집 날짜 */
-.label-schedule { left: 1100px; }/* 진행 일정 */
 
 /* 작성하기 버튼 (오른쪽 하단 고정) */
 .write-button {
@@ -66,37 +21,39 @@
   background-color: white;
   color: black;
   font-weight: 600;
+  margin-bottom: 20px;
   cursor: pointer;
 }
 
-/* 제출된 데이터 공통 스타일 */
-.submitted-data {
-  position: absolute;
-  color: white;
+
+.study-table1 {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 30px 60px;
+}
+
+.table-header1 {
+  display: grid;
+  grid-template-columns: 1fr 0.4fr 0.6fr; /* 제목 / 인원 / 날짜 */
+  padding: 12px 0 15px 0;
   font-size: 18px;
-  z-index: 4;
+  border-bottom: 1px solid white;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
 }
 
-/* 각 항목의 위치는 상단 기준 100px + 50px 간격으로 동적 설정됨
-   → 여기선 초기 위치만 정의 */
-.submitted-title {
-  top: 100px;
-  left: 3%; /* 제목은 왼쪽 여백 */
-}
-.submitted-recruit {
-  top: 100px;
-  left: 647px;
-}
-.submitted-date {
-  top: 100px;
-  left: 768px;
-}
-.submitted-schedule {
-  top: 100px;
-  left: 1045px;
+.table-row1 {
+  display: grid;
+  grid-template-columns: 1fr 0.4fr 0.6fr;
+  padding: 12px 0;
+  font-size: 18px;
+  text-align: center;
+  color: white;
 }
 
-/* 일정 텍스트만 보통 굵기로 */
-.schedule-text {
-  font-weight: normal;
+.table-row1:hover {
+  background-color: rgba(250, 249, 249, 0.158);
+  cursor: pointer;
 }
