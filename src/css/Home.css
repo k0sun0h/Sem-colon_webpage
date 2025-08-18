@@ -11,19 +11,17 @@
 
 /* 작성하기 버튼 (오른쪽 하단 고정) */
 .write-button {
-  position: absolute;
-  bottom: 20px;
-  right: 10px;
-  width: 100px;
-  height: 33px;
-  border-radius: 15px;
-  border: none;
-  background-color: white;
-  color: black;
-  font-weight: 600;
-  margin-bottom: 20px;
+  display: block;
+  margin: 30px auto 0 auto;  /* 상단 여백 30px, 좌우 auto로 가운데 정렬 */
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  background-color: rgba(255,255,255,0.1);
+  color: white;
+  border: 1px solid white;
   cursor: pointer;
 }
+
 
 
 .study-table1 {
@@ -56,4 +54,26 @@
 .table-row1:hover {
   background-color: rgba(250, 249, 249, 0.158);
   cursor: pointer;
+}
+/* 페이지네이션 스타일 (Home 전용, 변수명 뒤에 1) */
+.pagination1 {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-size: 18px;
+}
+
+.pagination1 .active {
+  text-decoration: underline;
+}
+
+.page-btn1 {
+  cursor: pointer;
+  padding: 0 6px;
+  color: white;
+}
+
+.page-btn1:hover {
+  color: #ccc;
 }
