@@ -75,7 +75,7 @@ function StudyProject() {
         </div>
 
         <div className="study-table">
-          <div className="table-header">
+          <div className="table-header"> 
             <span>제목</span>
             <span>참여 인원</span>
             <span>진행 날짜</span>

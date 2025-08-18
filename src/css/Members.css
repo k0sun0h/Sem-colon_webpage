@@ -42,33 +42,32 @@
 .members-wrapper1 {
   position: relative;
   z-index: 1;
-  padding: 100px 50px;
+  padding: 40px 100px;
   color: white;
+  width: 100%;
 }
 
 /* 상단 탭 영역 (운영진 / 현재 부원 / 졸업 부원) */
 .members-category1 {
   display: flex;
-  gap: 10px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 /* 개별 탭 버튼 */
 .members-tab1 {
-  background-color: rgba(255, 255, 255, 0.1); /* 공통 배경 */
-  border: 1px solid white;
-  color: white;
-  padding: 8px 20px;
-  border-radius: 6px;
-  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #D9D9D9;
+  border: none;
+  padding: 10px 26px;
   font-size: 16px;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
 /* 탭 hover 효과 */
-.members-tab1:hover {
-  background-color: rgba(255, 255, 255, 0.25);
+.members-tab1.active {
+  background-color: #252525;
+  color: white;
+  font-weight: bold;
 }
 
 /* 활성화된 탭: 강조 (배경색은 유지) */
@@ -93,8 +92,8 @@
   background-color: rgba(255, 255, 255, 0.08);
   border: 1px solid white;
   border-radius: 20px;
-  max-width: 670px;
-  min-height: 400px;
+  max-width: 500px;
+  max-height: 300px;
   color: white;
   position: relative;
   align-items: flex-start;
@@ -108,8 +107,8 @@
 
 /* 프로필 이미지 */
 .member-image1 {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   object-fit: cover;
   background-color: white;
@@ -123,7 +122,7 @@
 /* 이름 */
 .member-name1 {
   margin-left: 45px;
-  font-size: 75px;
+  font-size: 50px;
   font-weight: bold;
   margin-bottom: 6px;
 }
@@ -141,17 +140,12 @@
   color: white;
 }
 
-/* (사용되지 않음) - 포지션 대형 텍스트 */
-.member-position {
-  font-size: 50px;
-  border: 1px solid white;
-  border-radius: 4px;
-  margin-bottom: 16px;
-}
+
+
 
 /* 멤버 한 줄 소개 문장 */
 .member-desc1 {
-  font-size: 40px;
+  font-size: 25px;
   font-weight: 400;
   color: white;
   margin-left: -175px;
@@ -163,31 +157,31 @@
 
 /* 담당 파트 */
 .member-part1 {
-  font-size: 20px;
+  font-size: 17px;
   color: #ccc;
   margin-left: -175px;
   margin-bottom: 30px;
 }
 
 /* 하단 포트폴리오 + 연락처 영역 */
-.member-bottom {
+.member-footer1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 14px;
+  margin-top: -10px;   /* ⬅️ 전체 위로 이동 */
 }
+
 
 /* 포트폴리오 링크 */
 .portfolio-link {
-  font-size: 25px;
+  font-size: 15px;
   color: white;
   margin-left: -175px;
-  text-decoration: underline;
 }
 
 /* 연락처 정보 */
 .contact1 {
-  font-size: 25px;
+  font-size: 15px;
   margin-left: 200px;
   opacity: 0.9;
 }
