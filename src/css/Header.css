@@ -26,27 +26,19 @@
   color: white;
   font-size: 20px;
 }
-
 .nav a {
   text-decoration: none;
   color: white;
   opacity: 0.6;
 }
-
-.nav div {
-  opacity: 0.6;
-}
-
-.nav a.active {
-  opacity: 1;
-}
+.nav div { opacity: 0.6; }
+.nav a.active { opacity: 1; }
 
 .header-buttons {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 
 .apply-button {
   font-family: 'SeoulNamsan', sans-serif;
@@ -60,27 +52,49 @@
   cursor: pointer;
 }
 
-
-/* 마이페이지 팝업 */
+/* 마이페이지 아이콘 */
 .my-page-icon {
   margin-left: 30px;
   font-size: 45px;
   color: white;
   cursor: pointer;
+  transition: transform 0.18s ease, opacity 0.18s ease;
 }
-
 .my-page-icon:hover {
   opacity: 1;
   transform: scale(1.1);
 }
 
+/* 팝업 */
+.user-popup {
+  position: absolute;
+  top: 80px;
+  right: 30px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 20px;
+  z-index: 1000;
+  text-align: center;
+}
+
+/* 로그인 전 */
+.login-content p {
+  margin: 40px 0;
+  font-size: 30px;
+  font-weight: bold;
+}
+.login-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
 .popup-buttons {
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
   gap: 10px;
 }
-
 .popup-buttons button {
   padding: 8px;
   width: 130px;
@@ -91,101 +105,68 @@
   background-color: #eeeeee;
   transition: background-color 0.2s ease;
 }
+.popup-buttons button:hover { background-color: #cccccc; }
 
-.popup-buttons button:hover {
-  background-color: #cccccc;
-}
-
-.user-popup {
-  position: absolute;
-  top: 80px;
-  right: 30px;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  padding: 20px;
-  width: 400px;
-  z-index: 1000;
-  text-align: center;
-}
-
-/* 로그인 전 상태 */
-.login-buttons {
+/* --- 로그인 후: 프로필 상단 --- */
+.profile-header {
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.login-content p {
-  margin: 40px 0;
-  font-size: 30px;
-  font-weight: bold;
-}
-
-.login-buttons button {
-  flex: 1;
-  padding: 8px;
-  font-size: 14px;
-  border: none;
-  border-radius: 6px;
-  background-color: #eee;
-  cursor: pointer;
-}
-
-.login-buttons button:hover {
-  background-color: #ccc;
-}
-
-/* 로그인 후 상태 */
-.profile-content {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
 }
-
-.profile-content div h2,
-.profile-content div p {
-  margin-top: 13px;
-}
-
-.profile-img {
-  width: 100px;
-  height: 100px;
-
-  margin: 10px 0 20px 30px;
-
-  background-color: #ddd;
+.profile-avatar {
+  width: 84px;
+  height: 84px;
   border-radius: 50%;
+  object-fit: cover;
+  background-color: #eee;
+  border: 1px solid #e5e5e5;
+  flex-shrink: 0;
 }
-
-
-.profile-content > div:not(.profile-img) {
+.profile-avatar.icon {
+  width: 84px;
+  height: 84px;
+  color: #c7c7c7;
+  background: #f4f4f4;
+  border-radius: 50%;
+  border: 1px solid #e5e5e5;
+}
+.profile-meta {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;  /* 왼쪽 정렬 */
-  margin-left: 10px;         /* 이미지와의 간격 */
+  align-items: flex-start;
 }
-
-.email {
+.profile-name {
+  font-size: 30px;
+  font-weight: 800;
+  color: #111;
+}
+.profile-major {
+  margin-top: 4px;
   font-size: 14px;
   color: #666;
-  margin-bottom: 10px;
-
-  transform: translateX(-25px); /* ← 왼쪽으로 10px 이동 */
-
+}
+.profile-email {
+  margin-top: 2px;
+  font-size: 13px;
+  color: #999;
 }
 
+/* --- 로그인 후: 하단 영역 --- */
+.profile-body {
+  margin-top: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
 .apply-status {
   text-align: left;
   margin: 10px 0;
 }
-
 .apply-status a {
   text-decoration: none;
   color: black;
 }
-
 .apply-status a:hover {
   font-weight: bold;
 }
@@ -195,7 +176,6 @@
   flex-direction: column;
   gap: 10px;
 }
-
 .profile-buttons button {
   padding: 8px;
   font-size: 14px;
@@ -204,9 +184,4 @@
   background-color: #eee;
   cursor: pointer;
 }
-
-.profile-buttons button:hover {
-  background-color: #ccc;
-
-}
-
+.profile-buttons button:hover { background-color: #ccc; }

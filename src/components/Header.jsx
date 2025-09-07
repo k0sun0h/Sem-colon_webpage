@@ -6,48 +6,59 @@ import "../css/Header.css";
 
 function Header() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const { user, logout } = useAuth();  // AuthContext 사용
+  const { user, logout } = useAuth(); // { name, email, userId, major, profileImage } 기대
   const navigate = useNavigate();
   const popupRef = useRef(null);
 
-  const togglePopup = () => setIsPopupOpen(!isPopupOpen);
+  /** 팝업 토글 */
+  const togglePopup = () => setIsPopupOpen((v) => !v);
 
+  /** 로그아웃 */
   const handleLogout = () => {
     logout();
     setIsPopupOpen(false);
   };
 
+  /** 이동 헬퍼 */
   const handleLogin = () => {
     setIsPopupOpen(false);
     navigate("/login");
   };
-
   const handleSignup = () => {
     setIsPopupOpen(false);
     navigate("/signup");
   };
 
-  // 팝업 외부 클릭 시 닫기
+  /** 팝업 외부 클릭 시 닫기 */
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (isPopupOpen && popupRef.current && !popupRef.current.contains(e.target)) {
         setIsPopupOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isPopupOpen]);
 
+  /** 표시용 파생 값 */
+  const displayName =
+    (user?.name && user.name.trim()) ||
+    (user?.userId?.includes("@") ? user.userId.split("@")[0] : user?.userId) ||
+    "이름 미설정";
+  const displayMajor = (user?.major && user.major.trim()) || "학과 미설정";
+  const avatarSrc = user?.profileImage || ""; // 없으면 아이콘으로 대체
+
   return (
     <header className="header">
       <Link to="/" className="logo">SEM;COLON</Link>
+
       <nav className="nav">
         <NavLink to="/" end>동아리 소개</NavLink><div> | </div>
         <NavLink to="/members">동아리원</NavLink><div> | </div>
         <NavLink to="/study&project">스터디 & 프로젝트</NavLink><div> | </div>
         <NavLink to="/study">모집</NavLink>
       </nav>
+
       <div className="header-buttons">
         <Link to="/apply">
           <button className="apply-button">동아리 지원하기</button>
@@ -67,19 +78,30 @@ function Header() {
             </div>
           ) : (
             <>
-              <div className="profile-content">
-                {/* 프로필 이미지 (현재 API에 이미지 없음 → 기본 빈 div) */}
-                <div className="profile-img" />
-                <div>
-                  <h2>{user.name || user.userId}</h2>
-                  <p className="email">{user.email}</p>
+              {/* 상단: 프로필 사진 + 이름 + 학과 */}
+              <div className="profile-header">
+                {avatarSrc ? (
+                  <img className="profile-avatar" src={avatarSrc} alt="프로필" />
+                ) : (
+                  <IoPersonCircle className="profile-avatar icon" />
+                )}
+
+                <div className="profile-meta">
+                  <div className="profile-name">{displayName}</div>
+                  <div className="profile-major">{displayMajor}</div>
+                  {/* 이메일 보여주고 싶으면 아래 주석 해제
+                  <div className="profile-email">{user.email}</div>
+                  */}
                 </div>
               </div>
-              <div className="profile-content">
+
+              {/* 하단: 링크/버튼 영역 */}
+              <div className="profile-body">
                 <div className="apply-status">
                   <Link to="/my-page/WRpost"><p>모집글 작성 현황</p></Link>
                   <Link to="/my-page/applystatus"><p>내 지원 현황</p></Link>
                 </div>
+
                 <div className="popup-buttons profile-buttons">
                   <button onClick={() => navigate("/edit-profile")}>정보 수정</button>
                   <button onClick={handleLogout}>로그아웃</button>

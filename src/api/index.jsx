@@ -2,35 +2,57 @@ import api from "./client.jsx";
 
 // ===== Auth =====
 export const AuthAPI = {
-  // GET /api/login?userId=...&password=...
+  // 로그인
   async login({ userId, password }) {
     const { data } = await api.get("/api/login", {
       params: { userId, password },
     });
-    return data; // { accessToken, refreshToken }
+    return data; // { accessToken, refreshToken, user? }
   },
+
   async logout() {
     return;
   },
-  // POST /api/users/signup
-  async register({ name, email, userId, password }) {
-    const payload = { name, email, userId, password };
-    const { data } = await api.post("/api/users/signup", payload, {
-      headers: { "Content-Type": "application/json" },
+
+  // 회원가입 (multipart)
+  async register({ name, email, userId, password, major, profileImage }) {
+    const form = new FormData();
+    form.append("name", name);
+    form.append("email", email);
+    form.append("userId", userId || email);
+    form.append("password", password);
+    if (major) form.append("major", major);
+    if (profileImage) form.append("profileImage", profileImage);
+
+    const { data } = await api.post("/api/users/signup", form, {
+      headers: { "Content-Type": "multipart/form-data" },
     });
-    return data; // { userId, email, name }
+    return data; // { userId, email, name, major?, profileImage? }
+  },
+
+  // === 이메일 인증 코드 전송 ===
+  async sendEmailCode({ email }) {
+    // MSW 핸들러: POST /api/auth/email-code
+    // 성공시 204 No Content
+    await api.post("/api/auth/email-code", { email });
+    return true;
+  },
+
+  // === 추가: 이메일 인증 코드 검증 ===
+  async verifyEmailCode({ email, code }) {
+    // MSW 핸들러: POST /api/auth/email-verify
+    // 성공시 { verified: true }
+    const { data } = await api.post("/api/auth/email-verify", { email, code });
+    return !!data?.verified;
   },
 };
 
 // ===== Members(User) =====
 export const MembersAPI = {
-  // GET /api/user
   async list() {
     const { data } = await api.get("/api/user");
-    // 배열이 아닐 경우 배열로 감싸기
     return Array.isArray(data) ? data : [data];
   },
-  // POST /api/user (multipart/form-data)
   async create({ name, imageFile, introduction, devPart, phoneNumber, portfolio }) {
     const form = new FormData();
     form.append("name", name);
@@ -43,7 +65,6 @@ export const MembersAPI = {
       headers: { "Content-Type": "multipart/form-data" },
     });
   },
-  // DELETE /api/user  (body: { id })
   async remove({ id }) {
     await api.delete("/api/user", { data: { id } });
   },
