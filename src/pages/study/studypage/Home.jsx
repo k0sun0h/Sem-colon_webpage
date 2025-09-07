@@ -22,7 +22,7 @@ function Home({ dataList }) {
     if (p >= 1 && p <= totalPages1) setPage1(p);
   };
 
-  // ✅ 데이터 길이 바뀌면 페이지 유효성 검사
+  // ✅ 데이터가 바뀌면 현재 페이지 보정
   useEffect(() => {
     if (page1 > totalPages1) setPage1(totalPages1 || 1);
   }, [dataList, totalPages1, page1]);
@@ -40,12 +40,12 @@ function Home({ dataList }) {
               <span>모집 날짜</span>
             </div>
 
-            {/* ✅ 전체가 아닌 현재 페이지 아이템만 렌더 */}
+            {/* ✅ 현재 페이지의 모집글 목록 출력 */}
             {currentPageItems1.map((data) => (
               <div
                 className="table-row1"
                 key={data.id}
-                onClick={() => navigate(`/study/detail/${data.id}`)} // 기존 동작 유지
+                onClick={() => navigate(`/study/detail/${data.id}`)}
                 style={{ cursor: 'pointer' }}
               >
                 <span>{data.title}</span>
@@ -55,7 +55,7 @@ function Home({ dataList }) {
             ))}
           </div>
 
-          {/* ✅ 페이지네이션 UI */}
+          {/* ✅ 페이지네이션 버튼들 */}
           <div className="pagination1">
             <span className="page-btn1" onClick={() => changePage1(1)}>처음</span>
             {Array.from({ length: totalPages1 }).map((_, idx) => (
@@ -70,7 +70,7 @@ function Home({ dataList }) {
             <span className="page-btn1" onClick={() => changePage1(page1 + 1)}>&gt;</span>
           </div>
 
-          {/* 작성하기 버튼은 그대로 유지 */}
+          {/* ✅ 글 작성 버튼 */}
           <button
             className="write-button"
             onClick={() => {

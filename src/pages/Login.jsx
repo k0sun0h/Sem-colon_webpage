@@ -1,76 +1,89 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../css/Login.css';
+import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/useAuth.jsx";
+import "../css/Login.css";
 
-function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+export default function Login() {
+  const { login } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const redirectTo = location.state?.from?.pathname || "/";
 
-  const handleLogin = () => {
-    if (!email.trim() || !password.trim()) {
-        alert('이메일과 비밀번호를 모두 입력해주세요.');
-        return;
-    }
+  const [userId, setUserId] = useState("");
+  const [password, setPassword] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-
-    const registeredUser = JSON.parse(localStorage.getItem('registeredUser'));
-    if (!registeredUser || registeredUser.email !== email) {
-      alert('등록된 사용자가 없거나 이메일이 일치하지 않습니다.');
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!userId.trim() || !password.trim()) {
+      setError("아이디와 비밀번호를 입력하세요.");
       return;
     }
-    if (!password || registeredUser.password !== password) {
-      alert('비밀번호가 일치하지 않습니다.');
-      return;
+
+    try {
+      setSubmitting(true);
+      setError("");
+      await login(userId.trim(), password);
+      navigate(redirectTo, { replace: true });
+    } catch (err) {
+      const msg =
+        err?.response?.data?.message ||
+        err?.message ||
+        "로그인에 실패했습니다.";
+      setError(msg);
+    } finally {
+      setSubmitting(false);
     }
-    const userInfo = {
-      name: registeredUser.name,
-      major: registeredUser.major,
-      email: registeredUser.email,
-      profileImage: registeredUser.profileImage || null,
-    };
-
-
-
-    // 상태 저장
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('user', JSON.stringify(userInfo));
-
-    alert('로그인 성공!');
-    navigate('/');
-    window.location.reload();
-    };
-
+  };
 
   return (
     <>
       <div className="login-background" />
       <div className="login-container">
-        <div className="login-box">
+        <form className="login-box" onSubmit={handleSubmit}>
           <h2 className="login-title">로그인</h2>
+
+          {error && (
+            <div
+              style={{
+                background: "rgba(255,0,0,0.15)",
+                border: "1px solid #ff6b6b",
+                color: "white",
+                padding: "10px 12px",
+                borderRadius: 6,
+                marginBottom: 16,
+                fontSize: 14,
+              }}
+            >
+              {error}
+            </div>
+          )}
+
           <div className="login-inputs">
-            <label>이 메 일</label>
+            <label>아이디</label>
             <input
-              type="email"
-              value={email}
+              value={userId}
               className="login-input"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setUserId(e.target.value)}
+              disabled={submitting}
             />
+
             <label>비밀번호</label>
             <input
               type="password"
               value={password}
               className="login-input"
               onChange={(e) => setPassword(e.target.value)}
+              disabled={submitting}
             />
           </div>
-          <button className="login-button" onClick={handleLogin}>
-            로 그 인 하 기
+
+          <button className="login-button" type="submit" disabled={submitting}>
+            {submitting ? "로그인 중..." : "로그인"}
           </button>
-        </div>
+        </form>
       </div>
     </>
   );
 }
-
-export default Login;

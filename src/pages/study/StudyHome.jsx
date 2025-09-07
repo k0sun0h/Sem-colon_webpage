@@ -15,28 +15,74 @@ import Detail from './studypage/Detail'
 import '../../css/StudyHome.css';
 
 function StudyHome() {
-  // formDataList 상태 선언 (로컬스토리지에 저장된 값이 있으면 불러오고, 없으면 빈 배열)
-  const [formDataList, setFormDataList] = useState(() => {
-    const saved = localStorage.getItem('postList');
-    return saved ? JSON.parse(saved) : [];
-  });
+  // 서버에서 불러온 모집 글 목록 상태
+  const [formDataList, setFormDataList] = useState([]);
+  // 로딩 상태
+  const [loading, setLoading] = useState(true);
+  // 에러 메시지 상태
+  const [error, setError] = useState('');
 
-  // formDataList가 변경될 때마다 로컬스토리지에 저장
-  useEffect(() => {
-    localStorage.setItem('formDataList', JSON.stringify(formDataList));
-  }, [formDataList]);
-
-  // 새로운 데이터를 기존 리스트에 추가하는 함수
-  const handleAddFormData = (newData) => {
-    setFormDataList((prev) => [...prev, newData]);
+  // [추가] 서버 응답 → 화면 모델로 정규화
+  const normalize = (it) => {
+    const toRange = (v) => {
+      if (!v) return { start: '', end: '' };
+      if (typeof v === 'string' && v.includes('~')) {
+        const [s, e] = v.split('~').map((x) => x.trim());
+        return { start: s, end: e || s };
+      }
+      if (typeof v === 'object' && (v.start || v.end)) {
+        return { start: v.start || '', end: v.end || v.start || '' };
+      }
+      return { start: String(v), end: String(v) };
+    };
+    const r = toRange(it.recruitDate);
+    const p = toRange(it.progressDate);
+    return {
+      id: it.id ?? it._id ?? crypto.randomUUID(),
+      title: it.title ?? '',
+      recruitCount: it.personnel ?? '',
+      recruitStart: r.start,
+      recruitEnd: r.end,
+      scheduleStart: p.start,
+      scheduleEnd: p.end,
+      etc: it.content ?? '',
+    };
   };
 
-  // 라우팅 설정: / → Home, /write → Write, /appl/:index → Appl
+  // 마운트 시 서버에서 목록 불러오기
+  useEffect(() => {
+    let alive = true;
+    (async () => {
+      try {
+        // [추가] 목록 조회 API 호출
+        const res = await fetch('/api/study', { method: 'GET' });
+        if (!res.ok) throw new Error(`GET /api/study ${res.status}`);
+        const data = await res.json().catch(() => []);
+        if (!alive) return;
+        const list = Array.isArray(data) ? data : [];
+        setFormDataList(list.map(normalize));
+      } catch (e) {
+        setError(e.message || '목록을 불러오지 못했습니다.');
+      } finally {
+        if (alive) setLoading(false);
+      }
+    })();
+    return () => { alive = false; };
+  }, []);
+
+  if (loading) return <div style={{ color: '#fff', padding: 24 }}>불러오는 중…</div>;
+  if (error)   return <div style={{ color: '#fff', padding: 24 }}>{error}</div>;
+
+  // 라우팅 설정
   return (
     <Routes>
+      {/* 홈(목록) 페이지 */}
       <Route path="/" element={<Home dataList={formDataList} />} />
-      <Route path="/write" element={<Write addFormData={handleAddFormData} />} />
+      {/* 작성 페이지 */}
+      <Route path="/write" element={<Write />} />
+      {/* 지원서 작성 페이지 */}
       <Route path="/appl/:id" element={<Appl dataList={formDataList} />} />
+      {/* 상세 페이지 */}
       <Route path="/detail/:id" element={<Detail dataList={formDataList} />} />
     </Routes>
   );
