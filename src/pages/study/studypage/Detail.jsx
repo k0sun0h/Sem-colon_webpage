@@ -92,10 +92,10 @@ function Detail({ dataList }) {
               className="finish-button"
               onClick={() => {
                 const user = JSON.parse(localStorage.getItem('user'));
-                if (user?.email === post.email) {
-                  alert('본인이 작성한 모집글입니다.');
-                  return;
-                }
+                // if (user?.email === post.email) {
+                //   alert('본인이 작성한 모집글입니다.');
+                //   return;
+                // }
                 navigate(`/study/appl/${post.id}`);
               }}
               >
