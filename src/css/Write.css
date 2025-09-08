@@ -1,176 +1,151 @@
-/* ======= 고정 배경 이미지 설정 ======= */
+/* ===== 공통: 고정 배경 & 콘텐츠 래퍼 ===== */
 .fixed-background {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('../public/back-ground-image.jpeg'); /* 이미지 경로 (Write.jsx 기준) */
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-image: url('../public/back-ground-image.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   z-index: 0;
 }
-
-/* 배경 위 어두운 반투명 오버레이 */
 .fixed-background::after {
   content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  opacity: 0.8;
+  position: absolute; inset: 0;
+  background: black; opacity: 0.8;
 }
+.content { position: relative; z-index: 1; padding: 50px 0; }
 
-/* 내용 전체 컨테이너 (배경 위로 올라감) */
-.content {
-  position: relative;
-  z-index: 1;
-}
-
-/* ======= 작성 박스 ======= */
+/* ===== 메인 컨테이너 (Home 톤) ===== */
 .writ-box {
-  position: relative;         /* 배경 기준으로 절대 위치 */
-  top: -20px;                /* 화면 상단에서 떨어진 위치 (디자인 조정 가능) */
-  left: 50%;
-  transform: translateX(-50%); /* 수평 중앙 정렬 */
-  margin-top: 30px;
+  position: relative;
   width: 1320px;
-  height: 700px;
-  background-color: rgba(217, 217, 217, 0.2); /* 회색 반투명 */
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 20px;
-  padding-top: 80px;          /* 내부 콘텐츠 상단 여백 */
-  padding-bottom: 20px;
+  /* 기존: padding: 30px 60px 80px 60px; */
+  padding: 110px 60px 80px 60px; /* ↑ 제목/가로선 자리만큼 상단 여백 확보 */
 }
 
-/* 상단 흰색 가로선 */
-.sepa-line {
-  position: absolute;
-  top: 95px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1265px;
-  height: 5px;
-  border: 1px;
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.2);
-  z-index: 3;
-}
 
-/* 상단 제목 텍스트 */
+/* 상단 제목 & 구분선 */
+/* 상단 제목 & 구분선 */
 .write-title {
   position: absolute;
-  top: 25px;
+  top: 20px;               /* 상자 맨 위에서 20px 내려옴 */
   left: 50%;
   transform: translateX(-50%);
-  font-size: 30px;
-  color: white;
-  font-weight: 500;
-  z-index: 4;
+  font-size: 28px;
+  color: #fff;
+  font-weight: 600;
+  z-index: 2;
 }
 
-/* 우측 상단 닫기 버튼 */
-.close-button {
+.sepa-line {
   position: absolute;
-  top: 33px;
-  right: 35px;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 30px;
-  font-weight: bold;
-  cursor: pointer;
-  z-index: 4;
+  top: 65px;               /* 제목 아래쪽에 선 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 80px); /* 좌우 여백 고려 */
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 1px;
 }
 
-/* ======= form 구성 ======= */
 
-/* 입력 그룹 공통 (한 줄 단위) */
+/* 닫기 버튼 */
+.close-button {
+  position: absolute; top: 18px; right: 24px;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.6);
+  color: #fff; font-size: 18px;
+  border-radius: 10px; padding: 6px 10px;
+  cursor: pointer;
+}
+.close-button:hover { background: rgba(255,255,255,0.1); }
+
+/* ===== 폼 영역 ===== */
+.form-section {
+  display: block;            /* 섹션은 감싸는 용도만 */
+  padding-top: 6px;
+}
+
+/* 한 줄(라벨 + 필드들) */
 .form-group {
   display: flex;
   align-items: center;
-  margin: 35px 0 0 150px; /* 좌측 고정 여백 + 상단 마진 */
+  gap: 14px;
+  margin: 18px 0;
 }
 
-/* 라벨 공통 스타일 */
+/* 라벨: 고정 폭 + 우측 정렬 */
 .form-label {
-  width: 100px;
-  color: white;
-  font-size: 20px;
-  font-weight: 400;
-  margin-right: 100px; /* 라벨과 입력창 간격 */
+  flex: 0 0 120px;
+  text-align: right;
+  color: #fff; font-size: 18px;
+  padding-right: 6px;
 }
 
-.input-box,
-.textarea-input {
-  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+/* 필드(입력창들) 묶음: 라벨 다음 요소들 자동 줄바꿈 */
+.form-group > :not(.form-label) {
+  /* 남은 영역을 한 줄로 배치 */
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-
-/* 입력 박스 공통 스타일 */
+/* 입력 공통 */
 .input-box {
-  padding: 6px 10px;
-  border: 1px solid white;
-  border-radius: 4px;
-  background-color: transparent;
-  color: white;
-  font-size: 18px;
+  padding: 8px 10px;
+  background: transparent;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  color: #fff; font-size: 16px;
+  min-height: 38px;
 }
+.title-input { width: 520px; }
+.small-input { width: 220px; }
 
-/* 제목 입력 필드 */
-.title-input {
-  width: 450px;
-}
+.tilde { color: #fff; padding: 0 6px; }
 
-/* 모집인원 및 날짜 입력 필드 (소형) */
-.small-input {
-  width: 200px;
-  margin-right: 8px;
-}
-
-/* 날짜 구간 사이의 ~ 표시 스타일 */
-.tilde {
-  color: white;
-  margin: 0 8px;
-  font-size: 16px;
-}
-
-/* 기타내용 입력 textarea */
+/* 텍스트에어리어 */
+.textarea-group { align-items: flex-start; }
+.textarea-label { margin-top: 6px; }
 .textarea-input {
-  width: 600px;
-  height: 150px;
-  resize: none;
-  background-color: transparent;
-  border: 1px solid white;
-  border-radius: 4px;
-  color: white;
-  font-size: 18px;
-  padding: 10px;
+  width: 760px; height: 170px; resize: none;
+  background: transparent; border: 1px solid #fff;
+  border-radius: 8px; color: #fff; font-size: 16px;
+  padding: 12px;
 }
 
-/* 기타내용 전용 그룹 (상단 정렬) */
-.form-group.textarea-group {
-  align-items: flex-start;
+/* 입력 포커스 가시성 */
+.input-box:focus, .textarea-input:focus, input[type="date"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.25);
 }
 
-/* 기타내용 라벨 상단 위치 보정 */
-.textarea-label {
-  margin-top: 5px;
-}
-
-/* ======= 작성 완료 버튼 ======= */
+/* 작성 버튼 */
 .finish-button {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  width: 100px;
-  height: 33px;
-  border-radius: 15px;
-  border: none;
-  background-color: white;
-  color: black;
-  font-weight: 600;
+  position: absolute; bottom: 24px; right: 24px;
+  padding: 10px 16px; font-size: 16px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.1);
+  color: #fff; border: 1px solid #fff;
   cursor: pointer;
+}
+.finish-button:hover { background: rgba(255,255,255,0.18); }
+
+/* 읽기 전용(Detail) 보정 */
+.input-box[readonly], .textarea-input[readonly] {
+  opacity: 0.9; cursor: default;
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 1280px) {
+  .writ-box { width: calc(100% - 40px); padding: 28px 24px 72px; }
+  .title-input, .small-input, .textarea-input { width: 100%; }
+  .form-group { flex-wrap: wrap; }
+  .form-label { flex: 0 0 100%; text-align: left; }
+  .form-group > :not(.form-label) { width: 100%; }
 }

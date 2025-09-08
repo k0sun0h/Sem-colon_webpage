@@ -1,325 +1,270 @@
-/* 전체 배경 이미지를 화면에 고정 */
-.fixed-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw; /* 전체 뷰포트 너비 */
-  height: 100vh; /* 전체 뷰포트 높이 */
-  background-image: url('../public/back-ground-image.jpeg'); /* 배경 이미지 경로 */
-  background-size: cover;    /* 요소를 꽉 채움 */
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: 0; /* 맨 뒤에 위치 */
+/* ===== 배경 & 래퍼 ===== */
+.fixed-background{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  background-image:url('../public/back-ground-image.jpeg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  z-index:0;
+}
+.fixed-background::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:black;
+  opacity:.8
+}
+.content
+{position:relative;
+  z-index:1;
+  padding:50px 0
 }
 
-/* 배경 이미지 위에 검은 반투명 오버레이 추가 */
-.fixed-background::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  opacity: 0.8; /* 80% 불투명 */
+/* ===== 카드 컨테이너 ===== */
+.write-box{
+  --label-w:120px;      /* ⬅ 라벨 고정폭(세로선 정렬용). 필요시 110~140px 사이로 조절 */
+  --gap:22px;
+  position:relative;
+  width:1320px;
+  margin:0 auto;border-radius:20px;
+  background:rgba(255,255,255,.08);
+  padding:110px 60px 80px 60px;
 }
 
-/* 콘텐츠 전체 영역 (배경 위로 올라옴) */
-.content {
-  position: relative;
-  margin-top: -85px;
-  margin-bottom: 75px;
-  z-index: 1; /* 배경 위 */
+/* ===== 상단 제목 & 가로선(제목을 선 위로) ===== */
+.appl-title{
+  position:absolute;
+  top:20px;left:50%;
+  transform:translateX(-50%);
+  font-size:28px;
+  color:#fff;
+  font-weight:700;
+  z-index:2;
+}
+.sepa-line{
+  position:absolute;
+  top:65px;left:50%;
+  transform:translateX(-50%);
+  width:calc(100% - 80px);
+  height:1px;
+  background:rgba(255,255,255,.25);
+  border-radius:1px;
 }
 
-/* 작성 폼을 감싸는 박스 */
-.write-box {
-  position: relative;
-  top: -20px; /* 상단에서 60px만큼 떨어진 위치 (조절 가능) */
-  left: 50%;
-  transform: translateX(-50%); /* 가운데 정렬 */
-
-  width: 1320px;
-  min-height: 600px;
-  height: auto;
-  background-color: rgba(217, 217, 217, 0.2);
-  border-radius: 20px;
-  padding-top: 80px; /* 내부 콘텐츠 상단 여백도 함께 조정 (기존 110px에서 줄임) */
-  padding-bottom: 20px; /* 필요 시 추가 */
+/* 닫기 */
+.close-button{
+  position:absolute;
+  top:18px;right:24px;
+  background:none;
+  color:#fff;
+  border:1px solid rgba(255,255,255,.6);
+  border-radius:10px;
+  padding:6px 10px;
+  font-size:18px;
+  cursor:pointer;
+}
+.close-button:hover{
+  background:rgba(255,255,255,.1)
 }
 
-/* 상단 구분선 */
-.sepa-line {
-  position: absolute;
-  top: 95px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1265px;
-  height: 5px;
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.2);
-  z-index: 3;
+/* ===== 기본정보(학과·이름·연락처를 한 줄) ===== */
+.appl-form{
+  display:flex;
+  justify-content:center;
+  margin-bottom:6px
+}
+.appl-form-group{
+  display:grid;
+  grid-template-columns: var(--label-w) 1fr var(--label-w) 1fr var(--label-w) 1fr; /* 라벨/필드 × 3 */
+  column-gap:var(--gap);row-gap:16px;align-items:center;width:100%;
+}
+.appl-label{
+  color:#fff;
+  font-size:18px;
+  text-align:right;
+  padding-right:6px;
+  white-space:nowrap;
+}
+.appl-input{
+  min-height:38px;
+  width:100%;
+  padding:8px 10px;
+  background:transparent;
+  color:#fff;
+  border:1px solid #fff;
+  border-radius:8px;
+  font-size:16px;
 }
 
-/* 상단 제목 텍스트 */
-.appl-title {
-  position: absolute;
-  top: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 30px;
-  color: white;
-  font-weight: 500;
-  z-index: 4;
+/* 연락처 입력 박스도 같은 칼럼 너비 안에서 정렬 */
+.contact-input-group{
+  display:flex;
+  align-items:center;
+  width:100%;
+  padding:8px 10px;
+  background:transparent;
+  border:1px solid #fff;
+  border-radius:8px;
+}
+.contact-prefix{
+  color:#fff;
+  font-size:16px;
+  margin-right:6px;
+  white-space:nowrap
+}
+.contact-input{
+  flex:1;
+  border:none;
+  outline:none;
+  background:transparent;
+  color:#fff;
+  font-size:16px
+}
+.contact-input::placeholder{
+  color:rgba(255,255,255,.5)
 }
 
-/* 우측 상단 닫기 버튼 */
-.close-button {
-  position: absolute;
-  top: 33px;
-  right: 35px;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 30px;
-  font-weight: bold;
-  cursor: pointer;
-  z-index: 4;
+/* ===== 지원 동기(세로선 맞춤: 라벨 폭 동일) ===== */
+.motivation-group{
+  display:grid;
+  grid-template-columns: var(--label-w) 1fr;
+  column-gap:var(--gap);
+  row-gap:10px;align-items:start;
+  margin-top:20px;
+}
+.motivation-label{color:#fff;
+  font-size:18px;
+  text-align:right;
+  padding-right:6px
+}
+.motivation-input{
+  width:100%;
+  height:220px;
+  resize:none;
+  background:transparent;
+  color:#fff;
+  border:1px solid #fff;
+  border-radius:8px;
+  font-size:16px;
+  padding:12px;
 }
 
-/* 기본 정보 입력 폼 감싸는 영역 */
-.appl-form {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  z-index: 4;
-}
-
-/* 각 입력 항목 묶음 (기본) */
-.appl-form-group {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-/* 라벨 공통 스타일 */
-.appl-label {
-  color: white;
-  font-size: 16px;
-  margin-right: 8px;
-}
-
-/* input 공통 스타일 */
-.appl-input {
-  width: 180px;
-  padding: 5px 8px;
-  background-color: transparent;
-  border: 1px solid white;
-  border-radius: 5px;
-  color: white;
-  font-size: 16px;
-}
-
-/* 연락처 입력 전용 그룹 */
-.contact-input-group {
-  display: flex;
-  align-items: center;
-  border: 1px solid white;
-  border-radius: 5px;
-  padding: 5px 10px;
-  background-color: transparent;
-}
-
-/* 연락처 앞 '010-' 부분 */
-.contact-prefix {
-  color: white;
-  font-size: 16px;
-  line-height: 1.4;
-  margin-right: 4px;
-  white-space: nowrap;
-}
-
-/* 연락처 입력 input */
-.contact-input {
-  background-color: transparent;
-  border: none;
-  outline: none;
-  color: white;
-  font-size: 16px;
-  line-height: 1.4;
-  width: 100px;
-  padding: 0;
-  margin: 0;
-}
-
-/* 연락처 placeholder 스타일 */
-.contact-input::placeholder {
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 16px;
-  line-height: 1.4;
-}
-
-/* 지원 동기 섹션 전용 (줄바꿈 포함) */
-.motivation-group {
-  flex-direction: row;
-  align-items: flex-start;
-  margin-top: 30px;
-  margin-left: 87px;
-}
-
-/* 지원 동기 라벨 */
-.motivation-label {
-  margin-top: 8px;
-  font-size: 16px;
-  white-space: nowrap;
-}
-
-/* 지원 동기 입력 박스 (textarea) */
-.motivation-input {
-  margin-top: 8px;
-  width: 950px;
-  height: 200px;
-  resize: none;
-  background-color: transparent;
-  border: 1px solid white;
-  border-radius: 5px;
-  color: white;
-  font-size: 16px;
-  margin-left: 15px;
-  padding: 10px;
-}
-
-/* 포트폴리오 및 스택 입력 공통 그룹 */
+/* ===== 포트폴리오 / 기술 스택: 입력칸을 오른쪽으로 이동 ===== */
+/* 입력칸 최대폭과 오른쪽 이동량(=gutter)을 변수로 관리 */
 .portfolio-group,
-.stack-group {
-  display: flex;
+.stack-group{
+  --btn-w: 44px;
+  --input-max: 860px;   /* 입력칸 최대 너비 */
+  --gutter: 160px;       
+
+  display: grid;
+  /* [라벨 | 여백(gutter) | 입력칸 | +버튼] */
+  grid-template-columns: var(--label-w) var(--gutter) minmax(0, var(--input-max)) var(--btn-w);
+  column-gap: var(--gap);
+  row-gap: 12px;
   align-items: center;
-  flex-direction: row;
-  margin-top: 20px;
-  margin-left: 88px;
+  margin-top: 18px;
 }
 
-/* 포트폴리오 / 스택 라벨 및 스페이서 (동일 너비 보장) */
-.portfolio-label,
-.stack-label,
-.portfolio-label-spacer,
-.stack-label-spacer {
-  width: 260px;
+/* 요소를 원하는 칼럼에 정확히 배치 */
+.portfolio-label, .stack-label,
+.portfolio-label-spacer, .stack-label-spacer { grid-column: 1; }
+
+.portfolio-input, .stack-input { 
+  grid-column: 3;       /* ← 입력칸을 3번째 칼럼(=gutter 뒤)로 고정 */
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  color: #fff;
   font-size: 16px;
-  color: white;
-  white-space: nowrap;
+  padding: 8px 10px;
 }
 
-/* 라벨 스페이서 (라벨 대신 자리만 차지) */
-.portfolio-label-spacer,
-.stack-label-spacer {
-  height: 35px;
-}
-
-/* 입력 필드 공통 스타일 */
-.portfolio-input,
-.stack-input {
-  width: 750px;
-  height: 35px;
-  background-color: transparent;
-  border: 1px solid white;
-  border-radius: 5px;
-  color: white;
-  font-size: 16px;
-  margin-left: 15px;
+.add-button { 
+  grid-column: 4;       /* + 버튼은 4번째 칼럼 */
+  background: none;
+  border: 1px solid rgba(255,255,255,.6);
+  color: #fff; font-size: 18px;
+  border-radius: 10px; cursor: pointer;
   padding: 6px 10px;
 }
+.add-button:hover { background: rgba(255,255,255,.1); }
 
-/* + 버튼 스타일 */
-.add-button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 22px;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 0 6px;
-  margin-left: -25px;
-  line-height: 1;
+/* 화면이 좁아질 땐 자동으로 줄여 겹침 방지 */
+@media (max-width: 1280px){
+  .portfolio-group, .stack-group{
+    grid-template-columns: var(--label-w) 16px 1fr var(--btn-w); /* gutter를 16px로 축소 */
+  }
 }
 
-/* 포트폴리오 라벨 대체 spacer 위치 조절 */
-.portfolio-label-spacer {
-  display: inline-block;
-  width: 260px;
-  height: 35px;
-  flex-shrink: 0;
-  margin-left: 8px;
+/* 버튼 */
+.finish-button{
+  position:absolute;
+  bottom:24px;
+  right:24px;
+  padding:10px 16px;
+  font-size:16px;
+  border-radius:12px;
+  background:rgba(255,255,255,.1);
+  color:#fff;
+  border:1px solid #fff;
+  cursor:pointer;
+}
+.finish-button:hover{
+  background:rgba(255,255,255,.18)
 }
 
-/* 스택 라벨 대체 spacer 위치 조절 */
-.stack-label-spacer {
-  display: inline-block;
-  width: 260px;
-  height: 35px;
-  flex-shrink: 0;
-  margin-left: 8px;
+/* 읽기 전용 */
+.appl-input:focus,.contact-input:focus,.motivation-input:focus,.portfolio-input:focus,.stack-input:focus{
+  outline:none;box-shadow:0 0 0 2px rgba(255,255,255,.25);
 }
-
-/* 작성 완료 버튼 */
-.finish-button {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  width: 100px;
-  height: 33px;
-  border-radius: 15px;
-  border: none;
-  background-color: white;
-  color: black;
-  font-weight: 600;
-  cursor: pointer;
+.appl-input:disabled,.contact-input:disabled,.motivation-input:disabled{
+  opacity:.85;
+  cursor:not-allowed
 }
-
-.portfolio-wrapper {
-  margin-left: 175px;           /* 라벨과 링크 사이 간격 */
-  padding: 10px 14px;
-  max-width: 100%;
-  overflow-wrap: break-word;
+.portfolio-wrapper{
+  padding:8px 0;
+  max-width:100%;
+  margin-left: 360px;
+  overflow-wrap:break-word
 }
-
-.portfolio-link {
-  display: inline-block;
-  font-size: 16px;
-  color: #00ccff;
-  word-break: break-word;
+.portfolio-link{
+  color:#00ccff;
+  text-decoration:underline;
+  word-break:break-word
 }
-
-/* ===== ViewAppl 전용 읽기모드 보정 ===== */
-
-/* 읽기 전용 값(특히 기술 스택)을 흰색으로 통일 */
+/* === ViewAppl 전용: 기술 스택 위치 조정 === */
 .stack-value {
-  width: 750px;
-  margin-left: 15px;
-  color: white;
-  font-size: 16px;
-  line-height: 1.6;
-  word-break: keep-all;
-  overflow-wrap: break-word;
+  grid-column: 3;              /* margin-left 대신 grid의 세 번째 칸으로 배치 */
+  margin-left: 0;             
+  margin-top: 6px;
+
+  font-size: 15px;
+  color: #fff;
+  line-height: 1.5;
+
+  /* 세로로 떨어지지 않도록 텍스트 처리 */
+  white-space: normal;         /* 기본 줄바꿈 */
+  word-break: keep-all;        /* 단어 단위 유지 */
+  overflow-wrap: anywhere;     /* 너무 길면만 줄바꿈 */
 }
 
-/* 혹시 다른 CSS가 덮어쓰면 강제 적용 */
-.stack-group .stack-value, 
-.stack-group .stack-value * {
-  color: white !important;
+.stack-group .stack-value,.stack-group .stack-value *{
+  color:#fff!important
 }
 
-/* 읽기 전용 입력/텍스트영역 비활성화 시 시각적 구분 */
-.appl-input:disabled,
-.contact-input:disabled,
-.motivation-input:disabled {
-  opacity: 0.8;
-  cursor: not-allowed;
-}
 
-/* ViewAppl 내부 링크(포트폴리오)가 배경에서 잘 보이도록 */
-.portfolio-wrapper a.portfolio-link {
-  text-decoration: underline;
+
+/* 반응형 */
+@media (max-width:1280px){
+  .write-box{width:calc(100% - 40px);padding:110px 24px 72px}
+  .appl-form-group{grid-template-columns: var(--label-w) 1fr} /* 좁아지면 세로로 */
+  .portfolio-group,.stack-group{grid-template-columns: var(--label-w) 1fr 44px}
 }
 
